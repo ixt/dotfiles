@@ -98,7 +98,7 @@ if &diff
 endif
 
 " g++ compile 
-let $CXXFLAGS='-std=c++0x -Wall +whatever-other-options'
+let $CXXFLAGS='-std=c++0x'
 
 "}}}
 " Mappings {{{
@@ -121,17 +121,6 @@ map! <C-@> <C-Space>
 " Map leader
 let mapleader = ','
 
-" Toggle hlsearh for results
-nnoremap <leader><leader> :nohlsearch<CR>
-" Increment on cursor in new line
-nnoremap <leader>a  qaYp<C-A>q1@a
-" Open buff explorer
-nnoremap <leader>b :BufExplorer<CR>
-" Open diff vertical
-nnoremap <leader>d :vertical diffsplit<CR>
-" Open file browser
-nnoremap <leader>f :Explore<CR>
-
 " Buffer selection
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
@@ -145,16 +134,8 @@ nnoremap <M-Left> :bp<CR>
 nnoremap <M-n> :bn<CR>
 nnoremap <M-p> :bp<CR>
 
-" Spell checking
-nnoremap <leader>s :set spell!<CR>
-" Prepare tabularize
-nmap <Leader>t :'<,'> Tabularize /
-vmap <Leader>t :Tabularize /
 " vsplit
 nnoremap <leader>v :vsplit<CR>
-" Edit .vimrc
-nnoremap <leader>vi :e $HOME/.vimrc<CR>
-nnoremap <leader>vr :source $HOME/.vimrc<CR>
 " Search for trailing spaces
 nnoremap <leader>w :%s/\s\+$//gc<CR>
 
@@ -165,14 +146,6 @@ nnoremap <space> za
 " Search command history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-
-" Toggle colors
-noremap <F4> :call ToggleColours()<CR>
-" Ctags Bar
-noremap <F9> :TagbarToggle<CR>
-
-" Run compiler
-nnoremap <silent> <F5> :call ExecCompiler()<CR>
 
 "}}}
 " Abreviations {{{
@@ -243,5 +216,3 @@ autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd,*.mkdn
             \   setf markdown |
             \ endif
 
-"Set filetype for prg
-autocmd BufNewFile,BufRead *.prg,*.dev set ft=prg
