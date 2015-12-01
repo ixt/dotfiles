@@ -43,8 +43,6 @@ syntax on
 " General
 set backspace=2           " enable <BS> for everything
 set number	              " Show line numbers
-set completeopt=longest,menuone   " Autocompletion options
-set complete=.,w,b,u,t,i,d        " autocomplete options (:help 'complete')
 set hidden                " hide when switching buffers, don't unload
 set laststatus=2          " always show status line
 set lazyredraw            " don't update screen when executing macros
@@ -146,19 +144,7 @@ nnoremap <space> za
 " Search command history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-
-"}}}
-" Abreviations {{{
-" -----------------------------------------------------------------------------
-
-" Time
-iab _datetime <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
-iab _time <C-R>=strftime("%H:%M")<CR>
-iab _date <C-R>=strftime("%d %b %Y")<CR>
-
-" Personal
-iab _name ixtli 
-iab _mail a@ixtli.info
+command Mmr !make && make run
 
 "}}}
 " Plugin Settings {{{
