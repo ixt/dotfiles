@@ -17,16 +17,16 @@ call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
 
   " Put your non-Plugin stuff after this line
+  Plugin 'edkolev/promptline.vim'                 " Prompt generator for bash
   Plugin 'bling/vim-airline'                      " Pretty statusbar
   Plugin 'tpope/vim-fugitive'                     " Git wrapper
   Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
   Plugin 'sophacles/vim-processing'               " processing
   Plugin 'Valloric/YouCompleteMe'                 " Code Completion
+  Plugin 'rdnetto/YCM-Generator'                  " Youcompleteme Generator
   Plugin 'scrooloose/syntastic'                   " Syntax checking on write
-  Plugin 'edkolev/promptline.vim'                 " Prompt generator for bash
   Plugin 'godlygeek/tabular'                      " Text alignment
   Plugin 'majutsushi/tagbar'                      " Display tags in a window
-  Plugin 'rdnetto/YCM-Generator'                  " Youcompleteme Generator
 
   " All of your Plugins must be added before the following line
 call vundle#end()                     " required
