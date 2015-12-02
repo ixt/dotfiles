@@ -19,14 +19,16 @@ call vundle#begin()
   " Put your non-Plugin stuff after this line
   Plugin 'edkolev/promptline.vim'                 " Prompt generator for bash
   Plugin 'bling/vim-airline'                      " Pretty statusbar
-  Plugin 'tpope/vim-fugitive'                     " Git wrapper
-  Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
   Plugin 'sophacles/vim-processing'               " processing
   Plugin 'Valloric/YouCompleteMe'                 " Code Completion
   Plugin 'rdnetto/YCM-Generator'                  " Youcompleteme Generator
   Plugin 'scrooloose/syntastic'                   " Syntax checking on write
   Plugin 'godlygeek/tabular'                      " Text alignment
   Plugin 'majutsushi/tagbar'                      " Display tags in a window
+  " God's Plugins
+  Plugin 'tpope/vim-fugitive'                     " Git wrapper
+  Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
+  Plugin 'tpope/vim-commentary'                    " Commenting Operations
 
   " All of your Plugins must be added before the following line
 call vundle#end()                     " required
@@ -42,7 +44,7 @@ syntax on
 
 " General
 set backspace=2           " enable <BS> for everything
-set number	              " Show line numbers
+set relativenumber	              " Show line numbers
 set hidden                " hide when switching buffers, don't unload
 set laststatus=2          " always show status line
 set lazyredraw            " don't update screen when executing macros
@@ -90,11 +92,6 @@ set shm=atI               " cut large messages
 " Colours
 set t_Co=256
 
-" vimdiff
-if &diff
-    set diffopt=filler,foldcolumn:0
-endif
-
 " g++ compile 
 let $CXXFLAGS='-std=c++0x'
 
@@ -131,6 +128,8 @@ nnoremap <M-Right> :bn<CR>
 nnoremap <M-Left> :bp<CR>
 nnoremap <M-n> :bn<CR>
 nnoremap <M-p> :bp<CR>
+map <F1> :bp<CR>
+map <F2> :bn<CR>
 
 " vsplit
 nnoremap <leader>v :vsplit<CR>
@@ -145,6 +144,7 @@ nnoremap <space> za
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 command Mmr !make && make run
+
 
 "}}}
 " Plugin Settings {{{
