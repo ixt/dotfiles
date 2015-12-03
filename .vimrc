@@ -28,7 +28,6 @@ call vundle#begin()
   " God's Plugins
   Plugin 'tpope/vim-fugitive'                     " Git wrapper
   Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
-  Plugin 'tpope/vim-commentary'                    " Commenting Operations
 
   " All of your Plugins must be added before the following line
 call vundle#end()                     " required
