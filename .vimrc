@@ -1,22 +1,11 @@
-" Vicente Gimeno Morales - E7 Version 2.8 - 22 ene 2015 - edited by Ixtli
-"======================================================================#
-"
-" Compability {{{
-" -----------------------------------------------------------------------------
-"
-set nocompatible          " use vim defaults instead of vi
-set encoding=utf-8        " always encode in utf
-
 "}}}
 " Vim Plugins {{{
 " -----------------------------------------------------------------------------
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-  " let Vundle manage Vundle, required
   Plugin 'gmarik/Vundle.vim'
 
-  " Put your non-Plugin stuff after this line
   Plugin 'edkolev/promptline.vim'                 " Prompt generator for bash
   Plugin 'bling/vim-airline'                      " Pretty statusbar
   Plugin 'sophacles/vim-processing'               " processing
@@ -29,36 +18,35 @@ call vundle#begin()
   Plugin 'tpope/vim-fugitive'                     " Git wrapper
   Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
 
-  " All of your Plugins must be added before the following line
 call vundle#end()                     " required
 
 "}}}
 " Settings {{{
 " -----------------------------------------------------------------------------
 
+" Compatibility   
+set encoding=utf-8        " always encode in utf
+
 " File detection
 filetype on
 filetype plugin indent on
 syntax on
+set autoread
 
 " General
 set backspace=2           " enable <BS> for everything
-set relativenumber	              " Show line numbers
+set rnu                   " Show relative line numbers
 set hidden                " hide when switching buffers, don't unload
-set laststatus=2          " always show status line
 set lazyredraw            " don't update screen when executing macros
-set mouse=a               " enable mouse in all modes
 set noshowmode            " don't show mode, since I'm already using airline
-set showbreak="+++ " 	    " String to show with wrap lines
 set showcmd               " show command on last line of screen
 set showmatch             " show bracket matches
-set textwidth=0           " don't break lines after some maximum width
 set ttyfast               " increase chars sent to screen for redrawing
 set title                 " use filename in window title
 set wildmenu              " enhanced cmd line completion
 set wildchar=<TAB>	      " key for line completion
 set noerrorbells          " no error sound
-set splitright	          " Split new buffer at right
+set visualbell            " visual bell
 
 " Folding
 set foldignore=           " don't ignore anything when folding
@@ -68,23 +56,21 @@ set foldnestmax=1         " limit max folds for indent and syntax methods
 
 " Tabs
 set autoindent            " copy indent from previous line
+set smartindent           " auto add a layer of indenting if C-like
 set expandtab             " replace tabs with spaces
-set shiftwidth=2          " spaces for autoindenting
+set shiftwidth=4          " spaces for autoindenting
 set smarttab              " <BS> removes shiftwidth worth of spaces
-set softtabstop=2         " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=2             " spaces for <Tab>
+set softtabstop=4         " spaces for editing, e.g. <Tab> or <BS>
+set tabstop=4             " spaces for <Tab>
 
 " Searches
 set hlsearch              " highlight search results
 set incsearch             " search whilst typing
 set ignorecase            " case insensitive searching
 set smartcase             " override ignorecase if upper case typed
-set more	                " Stop in list
 
 " Status bar -> Replace with vim-airplane plugin
 set laststatus=2          " show ever
-set showmode              " show mode
-set showcmd               " show cmd
 set ruler                 " show cursor line number
 set shm=atI               " cut large messages
 
@@ -93,6 +79,11 @@ set t_Co=256
 
 " g++ compile 
 let $CXXFLAGS='-std=c++0x'
+
+" Remove backup stuff
+set nobackup              
+set nowritebackup
+set noswapfile
 
 "}}}
 " Mappings {{{
@@ -113,20 +104,15 @@ map! <ESC>Oa <C-Up>
 map! <C-@> <C-Space>
 
 " Map leader
-let mapleader = ','
+let mapleader = ","
+let g:mapleader = ","
 
 " Buffer selection
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 nnoremap <leader><Tab> :b#<CR>
-nnoremap <C-Tab> :bn<CR>
-nnoremap <C-S-Tab> :bp<CR>
 nnoremap <C-Right> :bn<CR>
 nnoremap <C-Left> :bp<CR>
-nnoremap <M-Right> :bn<CR>
-nnoremap <M-Left> :bp<CR>
-nnoremap <M-n> :bn<CR>
-nnoremap <M-p> :bp<CR>
 map <F1> :bp<CR>
 map <F2> :bn<CR>
 
@@ -142,8 +128,15 @@ nnoremap <space> za
 " Search command history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" Make and Make run
 command Mmr !make && make run
 
+" Quicksave
+nmap <leader>w :w!<cr>
+
+" super do write
+command W w !sudo tee % > /dev/null
 
 "}}}
 " Plugin Settings {{{
@@ -201,3 +194,10 @@ autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd,*.mkdn
             \   setf markdown |
             \ endif
 
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py,*.coffee,*.csv :call DeleteTrailingWS()
