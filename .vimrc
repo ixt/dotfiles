@@ -1,4 +1,15 @@
 "}}}
+" Small stuff {{{
+" -----------------------------------------------------------------------------
+set encoding=utf-8        " always encode in utf
+
+" File detection
+filetype on
+filetype plugin indent on
+syntax on
+set autoread
+
+"}}}
 " Vim Plugins {{{
 " -----------------------------------------------------------------------------
 
@@ -23,15 +34,6 @@ call vundle#end()                     " required
 "}}}
 " Settings {{{
 " -----------------------------------------------------------------------------
-
-" Compatibility   
-set encoding=utf-8        " always encode in utf
-
-" File detection
-filetype on
-filetype plugin indent on
-syntax on
-set autoread
 
 " General
 set backspace=2           " enable <BS> for everything
@@ -77,31 +79,17 @@ set shm=atI               " cut large messages
 " Colours
 set t_Co=256
 
-" g++ compile 
+" g++ compile
 let $CXXFLAGS='-std=c++0x'
 
 " Remove backup stuff
-set nobackup              
+set nobackup
 set nowritebackup
 set noswapfile
 
 "}}}
 " Mappings {{{
 " -----------------------------------------------------------------------------
-
-" Fixes linux console keys
-" "od -a" and get the code
-" "^[" is <ESC> at vim
-map <ESC>Ob <C-Down>
-map <ESC>Oc <C-Right>
-map <ESC>Od <C-Left>
-map <ESC>Oa <C-Up>
-map <C-@> <C-Space>
-map! <ESC>Ob <C-Down>
-map!<ESC>Oc <C-Right>
-map! <ESC>Od <C-Left>
-map! <ESC>Oa <C-Up>
-map! <C-@> <C-Space>
 
 " Map leader
 let mapleader = ","
@@ -116,10 +104,8 @@ nnoremap <C-Left> :bp<CR>
 map <F1> :bp<CR>
 map <F2> :bn<CR>
 
-" vsplit
-nnoremap <leader>v :vsplit<CR>
-" Search for trailing spaces
-nnoremap <leader>w :%s/\s\+$//gc<CR>
+" Search for trailing spaces and delete
+nnoremap <leader>w :%s/\s\+$//g<CR>
 
 " Next window
 nnoremap <tab> <C-W>w
@@ -161,25 +147,12 @@ let g:processing_fold = 1
 " Autocommands {{{
 " -----------------------------------------------------------------------------
 
-" Omnicompletion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,xhtml setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
-
 " Indent rules
 autocmd FileType c
       \ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType cpp,java,javascript,json,markdown,php,python
       \ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType markdown setlocal textwidth=79
-autocmd FileType prg
-      \ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 cindent
-
-" Txt
-autocmd FileType text setlocal textwidth=79 wrap
 
 " Folding rules
 autocmd FileType c,cpp,java,prg setlocal foldmethod=syntax foldnestmax=5
