@@ -98,9 +98,6 @@ let g:mapleader = ","
 " Buffer selection
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
-nnoremap <leader><Tab> :b#<CR>
-nnoremap <C-Right> :bn<CR>
-nnoremap <C-Left> :bp<CR>
 map <F1> :bp<CR>
 map <F2> :bn<CR>
 
@@ -123,6 +120,12 @@ nmap <leader>w :w!<cr>
 
 " super do write
 command W w !sudo tee % > /dev/null
+
+" Take of those training wheels
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
 "}}}
 " Plugin Settings {{{
