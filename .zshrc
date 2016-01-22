@@ -53,7 +53,7 @@ plugins=(git emoji vi-mode web-search)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/ixtli/bin:/opt/processing-3.0.1:/opt/arduino-1.6.5-r5:/opt/openFrameworks/apps/projectGenerator/commandLine/bin:/opt/anaconda2/bin:/home/ixtli/.buildrepos/linux-samus/scripts/setup/brightness"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/ixtli/bin:/opt/processing-3.0.1:/opt/arduino-1.6.5-r5:/opt/openFrameworks/apps/projectGenerator/commandLine/bin:/opt/anaconda2/bin:/home/ixtli/.buildrepos/linux-samus/scripts/setup/brightness:/opt/LabBundle"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
