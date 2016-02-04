@@ -17,17 +17,14 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
 
-  Plugin 'edkolev/promptline.vim'                 " Prompt generator for bash
-  Plugin 'bling/vim-airline'                      " Pretty statusbar
-  Plugin 'sophacles/vim-processing'               " processing
-  Plugin 'Valloric/YouCompleteMe'                 " Code Completion
-  Plugin 'rdnetto/YCM-Generator'                  " Youcompleteme Generator
-  Plugin 'scrooloose/syntastic'                   " Syntax checking on write
-  Plugin 'godlygeek/tabular'                      " Text alignment
-  Plugin 'majutsushi/tagbar'                      " Display tags in a window
-  " God's Plugins
-  Plugin 'tpope/vim-fugitive'                     " Git wrapper
-  Plugin 'tpope/vim-surround'                     " Manipulate quotes and brackets
+  Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
+  Plugin 'itchyny/lightline.vim'        " Testing new statusbar 
+  Plugin 'sophacles/vim-processing'     " processing
+  Plugin 'Valloric/YouCompleteMe'       " Code Completion
+  Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
+  Plugin 'scrooloose/syntastic'         " Syntax checking on write
+  Plugin 'tpope/vim-fugitive'           " Git wrapper
+  Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
 
 call vundle#end()                     " required
 
@@ -37,7 +34,6 @@ call vundle#end()                     " required
 
 " General
 set backspace=2           " enable <BS> for everything
-set rnu                   " Show relative line numbers
 set hidden                " hide when switching buffers, don't unload
 set lazyredraw            " don't update screen when executing macros
 set noshowmode            " don't show mode, since I'm already using airline
@@ -49,6 +45,7 @@ set wildmenu              " enhanced cmd line completion
 set wildchar=<TAB>	      " key for line completion
 set noerrorbells          " no error sound
 set visualbell            " visual bell
+set number
 
 " Folding
 set foldignore=           " don't ignore anything when folding
@@ -106,8 +103,7 @@ nnoremap <leader>w :%s/\s\+$//g<CR>
 
 " Next window
 nnoremap <tab> <C-W>w
-" Togle fold
-nnoremap <space> za
+
 " Search command history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
@@ -121,19 +117,25 @@ nmap <leader>w :w!<cr>
 " super do write
 command W w !sudo tee % > /dev/null
 
-" Take of those training wheels
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 "}}}
 " Plugin Settings {{{
 " -----------------------------------------------------------------------------
-"  vim-airline
-let g:airline_inactive_collapse = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'filename' ],
+  \             [ 'readonly', 'fugitive' ] ],
+  \   'right': [ [ 'percent', 'lineinfo' ],
+  \              [ 'fileencoding', 'filetype' ],
+  \              [ 'fileformat', 'syntastic' ] ]
+  \ },
+  \ 'component_expand': {
+  \   'syntastic': 'SyntasticStatuslineFlag',
+  \ },
+  \ 'component_type': {
+  \   'syntastic': 'error',
+  \ }
+  \ }
 
 " Promptline
 " \'b': [ promptline#slices#host(), promptline#slices#user() ],
@@ -143,37 +145,3 @@ let g:promptline_preset = {
         \'z': [ promptline#slices#git_status() ],
         \'warn' : [ promptline#slices#last_exit_code() ]}
 
-" Processing
-let g:processing_fold = 1
-
-"}}}
-" Autocommands {{{
-" -----------------------------------------------------------------------------
-
-" Indent rules
-autocmd FileType c
-      \ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType cpp,java,javascript,json,markdown,php,python
-      \ setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType markdown setlocal textwidth=79
-
-" Folding rules
-autocmd FileType c,cpp,java,prg setlocal foldmethod=syntax foldnestmax=5
-autocmd FileType css,html,htmldjango,xhtml
-      \ setlocal foldmethod=indent foldnestmax=20
-
-" Set correct markdown extensions
-autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd,*.mkdn
-            \ if &ft =~# '^\%(conf\|modula2\)$' |
-            \   set ft=markdown |
-            \ else |
-            \   setf markdown |
-            \ endif
-
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py,*.coffee,*.csv :call DeleteTrailingWS()
