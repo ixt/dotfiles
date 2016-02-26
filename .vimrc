@@ -18,7 +18,7 @@ call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
 
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
-  Plugin 'itchyny/lightline.vim'        " Testing new statusbar 
+  Plugin 'vim-airline/vim-airline'      " Status bar
   Plugin 'sophacles/vim-processing'     " processing
   Plugin 'Valloric/YouCompleteMe'       " Code Completion
   Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
@@ -136,6 +136,9 @@ let g:lightline = {
   \   'syntastic': 'error',
   \ }
   \ }
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Promptline
 " \'b': [ promptline#slices#host(), promptline#slices#user() ],
