@@ -25,6 +25,7 @@ call vundle#begin()
   Plugin 'scrooloose/syntastic'         " Syntax checking on write
   Plugin 'tpope/vim-fugitive'           " Git wrapper
   Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
+  Plugin 'vimwiki/vimwiki'              " Wiki & Note taking
 
 call vundle#end()                     " required
 
@@ -117,6 +118,13 @@ nmap <leader>w :w!<cr>
 " super do write
 command W w !sudo tee % > /dev/null
 
+" Set space to fold
+nnoremap <space> za
+
+" Some leader navigation i wanna try
+nnoremap <leader>k <C-b>
+nnoremap <leader>j <C-f>
+
 "}}}
 " Plugin Settings {{{
 " -----------------------------------------------------------------------------
@@ -148,3 +156,11 @@ let g:promptline_preset = {
         \'z': [ promptline#slices#git_status() ],
         \'warn' : [ promptline#slices#last_exit_code() ]}
 
+"}}}
+" Folding {{{
+" -----------------------------------------------------------------------------
+
+autocmd FileType c,cpp,java,prg 
+        \ setlocal foldmethod=syntax foldnestmax=5
+autocmd FileType css,html
+        \ setlocal foldmethod=indent foldnestmax=10
