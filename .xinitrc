@@ -1,1 +1,2 @@
-exec i3 
+urxvtd --quiet --opendisplay --fork
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
