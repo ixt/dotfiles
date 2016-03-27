@@ -1,2 +1,2 @@
 # dotfiles
-This is my configuration files plus stuff im not sure should be in here but is anyway 
+these are my dotfiles. nothing special. zsh, x11, i3status and vim (at time of writing)
