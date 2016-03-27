@@ -16,7 +16,6 @@ set autoread
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
-
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
   Plugin 'vim-airline'
   Plugin 'sophacles/vim-processing'     " processing
@@ -25,8 +24,6 @@ call vundle#begin()
   Plugin 'scrooloose/syntastic'         " Syntax checking on write
   Plugin 'tpope/vim-fugitive'           " Git wrapper
   Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
-  Plugin 'vimwiki/vimwiki'              " Wiki & Note taking
-
 call vundle#end()                     " required
 
 "}}}
@@ -45,8 +42,6 @@ set title                 " use filename in window title
 set wildmenu              " enhanced cmd line completion
 set wildchar=<TAB>	      " key for line completion
 set noerrorbells          " no error sound
-set visualbell            " visual bell
-set number
 
 " Folding
 set foldignore=           " don't ignore anything when folding
@@ -82,6 +77,12 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Folding
+autocmd FileType c,cpp,java,prg
+        \ setlocal foldmethod=syntax foldnestmax=5
+autocmd FileType css,html
+        \ setlocal foldmethod=indent foldnestmax=10
+
 "}}}
 " Mappings {{{
 " -----------------------------------------------------------------------------
@@ -93,18 +94,9 @@ let g:mapleader = ","
 " Buffer selection
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
-map <F1> :bp<CR>
-map <F2> :bn<CR>
 
 " Search for trailing spaces and delete
-nnoremap <leader>w :%s/\s\+$//g<CR>
-
-" Next window
-nnoremap <tab> <C-W>w
-
-" Search command history
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+nnoremap <leader>u :%s/\s\+$//g<CR>
 
 " Make and Make run
 command Mmr !make && make run
@@ -118,35 +110,7 @@ command W w !sudo tee % > /dev/null
 " Set space to fold
 nnoremap <space> za
 
-" Some leader navigation i wanna try
+" Leader page turning
 nnoremap <leader>k <C-b>
 nnoremap <leader>j <C-f>
 
-"}}}
-" Plugin Settings {{{
-" -----------------------------------------------------------------------------
-
-let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'filename' ],
-  \             [ 'readonly', 'fugitive' ] ],
-  \   'right': [ [ 'percent', 'lineinfo' ],
-  \              [ 'fileencoding', 'filetype' ] ]
-  \ }
-  \ }
-
-" Promptline
-" \'b': [ promptline#slices#host(), promptline#slices#user() ],
-let g:promptline_preset = {
-        \'b': [ promptline#slices#cwd() ],
-        \'c': [ promptline#slices#vcs_branch() ],
-        \'z': [ promptline#slices#git_status() ]}
-
-"}}}
-" Folding {{{
-" -----------------------------------------------------------------------------
-
-autocmd FileType c,cpp,java,prg 
-        \ setlocal foldmethod=syntax foldnestmax=5
-autocmd FileType css,html
-        \ setlocal foldmethod=indent foldnestmax=10
