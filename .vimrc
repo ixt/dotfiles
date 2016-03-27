@@ -18,7 +18,7 @@ call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
 
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
-  Plugin 'vim-airline/vim-airline'      " Status bar
+  Plugin 'vim-airline'
   Plugin 'sophacles/vim-processing'     " processing
   Plugin 'Valloric/YouCompleteMe'       " Code Completion
   Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
@@ -77,9 +77,6 @@ set shm=atI               " cut large messages
 " Colours
 set t_Co=256
 
-" g++ compile
-let $CXXFLAGS='-std=c++0x'
-
 " Remove backup stuff
 set nobackup
 set nowritebackup
@@ -134,27 +131,16 @@ let g:lightline = {
   \   'left': [ [ 'filename' ],
   \             [ 'readonly', 'fugitive' ] ],
   \   'right': [ [ 'percent', 'lineinfo' ],
-  \              [ 'fileencoding', 'filetype' ],
-  \              [ 'fileformat', 'syntastic' ] ]
-  \ },
-  \ 'component_expand': {
-  \   'syntastic': 'SyntasticStatuslineFlag',
-  \ },
-  \ 'component_type': {
-  \   'syntastic': 'error',
+  \              [ 'fileencoding', 'filetype' ] ]
   \ }
   \ }
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
 " Promptline
 " \'b': [ promptline#slices#host(), promptline#slices#user() ],
 let g:promptline_preset = {
         \'b': [ promptline#slices#cwd() ],
         \'c': [ promptline#slices#vcs_branch() ],
-        \'z': [ promptline#slices#git_status() ],
-        \'warn' : [ promptline#slices#last_exit_code() ]}
+        \'z': [ promptline#slices#git_status() ]}
 
 "}}}
 " Folding {{{
