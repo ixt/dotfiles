@@ -1,4 +1,4 @@
-xterm*font: *-fixed-*-*-*-18-*
+xterm*font: *-fixed-*-*-*-19-*
 
 ! black
 *color0:  #2E3436
