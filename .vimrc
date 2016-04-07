@@ -77,6 +77,12 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Highlighting
+highlight Comment cterm=italic
+highlight Identifier cterm=italic
+highlight Statement cterm=italic
+highlight PreProc cterm=bold
+
 " Folding
 autocmd FileType c,cpp,java,prg
         \ setlocal foldmethod=syntax foldnestmax=5
