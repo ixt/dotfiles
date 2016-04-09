@@ -120,3 +120,19 @@ nnoremap <space> za
 nnoremap <leader>k <C-b>
 nnoremap <leader>j <C-f>
 
+"}}}
+" Test place {{{
+" -----------------------------------------------------------------------------
+
+func! WordProcessingMode()
+    setlocal formatoptions=1
+    setlocal noexpandtab
+    setlocal spell spelllang=basicenglish
+    map j gj
+    map k gk
+    set complete+=s
+    set formatprg=par
+    setlocal wrap
+    setlocal linebreak
+endfu
+com! WP call WordProcessingMode()
