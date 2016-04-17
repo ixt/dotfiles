@@ -42,6 +42,7 @@ set title                 " use filename in window title
 set wildmenu              " enhanced cmd line completion
 set wildchar=<TAB>	      " key for line completion
 set noerrorbells          " no error sound
+set number                " enable numbers on lines
 
 " Folding
 set foldignore=           " don't ignore anything when folding
@@ -106,9 +107,6 @@ nnoremap <leader>u :%s/\s\+$//g<CR>
 
 " Make and Make run
 command Mmr !make && make run
-
-" Quicksave
-nmap <leader>w :w!<cr>
 
 " super do write
 command W w !sudo tee % > /dev/null
