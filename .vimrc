@@ -125,7 +125,7 @@ nnoremap <leader>j <C-f>
 func! WordProcessingMode()
     setlocal formatoptions=1
     setlocal noexpandtab
-    setlocal spell spelllang=basicenglish
+    setlocal spell spelllang=en_gb
     map j gj
     map k gk
     set complete+=s
