@@ -4,7 +4,6 @@ set $white      #ffffff
 set $red        #ff0000
 set $light      #888888
 
-
 # class                 border  backgr. text    indicator   child_border
 client.focused          $darkg  $black  $white  $black      $darkg
 client.focused_inactive $darkg  $darkg  $white  $black      $darkg
@@ -19,13 +18,19 @@ font pango:Operator Mono Light 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm -fa 'Operator Mono Light' -fs 14
+bindsym $mod+Return exec uxterm -fa 'Operator Mono Light' -fs 14 -bg black -fg white
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -nb "$black" -nf "$white" -sb "$red" -sf "$black"
+
+# volume keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
 
 # change focus
 bindsym $mod+j focus left
@@ -107,6 +112,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Lock screen
+bindsym XF86ScreenSaver exec i3lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
