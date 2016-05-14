@@ -1,31 +1,31 @@
 xterm*font: *-fixed-*-*-*-19-*
 
-XTerm*Background: black
-XTerm*Foreground: white 
+*Background: black
+*Foreground: white 
 ! black
-XTerm.color0:  rgb:2e/34/36
-XTerm.color8:  rgb:55/57/53
+*color0:  rgb:2e/34/36
+*color8:  rgb:55/57/53
 ! red
-XTerm*color1:  rgb:a4/00/00
-XTerm*color9:  rgb:ef/29/29
+*color1:  rgb:a4/00/00
+*color9:  rgb:ef/29/29
 ! green
-XTerm*color2:  rgb:4e/9a/06
-XTerm*color10: rgb:8a/e2/34
+*color2:  rgb:4e/9a/06
+*color10: rgb:8a/e2/34
 ! yellow
-XTerm*color3:  rgb:c4/a0/00
-XTerm*color11: rgb:fc/e9/4f
+*color3:  rgb:c4/a0/00
+*color11: rgb:fc/e9/4f
 ! blue
-XTerm*color4:  rgb:34/65/a4
-XTerm*color12: rgb:72/9f/cf
+*color4:  rgb:34/65/a4
+*color12: rgb:72/9f/cf
 ! purple
-XTerm*color5:  rgb:75/50/7B
-XTerm*color13: rgb:ad/7f/a8
+*color5:  rgb:75/50/7B
+*color13: rgb:ad/7f/a8
 ! orange (replaces cyan)
-XTerm*color6:  rgb:ce/5c/00
-XTerm*color14: rgb:fc/af/3e
+*color6:  rgb:ce/5c/00
+*color14: rgb:fc/af/3e
 ! white
-XTerm*color7:  rgb:ba/bd/b9
-XTerm*color15: rgb:ee/ee/ec
+*color7:  rgb:ba/bd/b9
+*color15: rgb:ee/ee/ec
 
 XTerm*VT100.*translations:  #override \ 
     Shift Ctrl <Key>C: select-end(CLIPBOARD, CUT_BUFFER0) \n\
