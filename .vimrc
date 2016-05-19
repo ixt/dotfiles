@@ -26,6 +26,7 @@ call vundle#begin()
   Plugin 'tpope/vim-fireplace'          " Fireplace Closure REPL
   Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
   Plugin 'hylang/vim-hy'                " Hylang Syntax
+  Plugin 'itchyny/calendar.vim'         " Calendar
 call vundle#end()                     " required
 
 "}}}
