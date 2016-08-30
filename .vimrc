@@ -18,15 +18,11 @@ call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
   Plugin 'vim-airline'
-  Plugin 'sophacles/vim-processing'     " processing
   Plugin 'Valloric/YouCompleteMe'       " Code Completion
   Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
   Plugin 'scrooloose/syntastic'         " Syntax checking on write
   Plugin 'tpope/vim-fugitive'           " Git wrapper
-  Plugin 'tpope/vim-fireplace'          " Fireplace Closure REPL
   Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
-  Plugin 'hylang/vim-hy'                " Hylang Syntax
-  Plugin 'itchyny/calendar.vim'         " Calendar
 call vundle#end()                     " required
 
 "}}}
@@ -86,7 +82,6 @@ highlight Comment cterm=italic
 highlight Identifier cterm=italic
 highlight Statement cterm=italic
 highlight PreProc cterm=bold
-autocmd BufNewFile,BufRead *.hy set syn=hy
 
 " Folding
 autocmd FileType c,cpp,java,prg
