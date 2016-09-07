@@ -21,7 +21,6 @@ call vundle#begin()
   Plugin 'Valloric/YouCompleteMe'       " Code Completion
   Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
   Plugin 'scrooloose/syntastic'         " Syntax checking on write
-  Plugin 'tpope/vim-fugitive'           " Git wrapper
   Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
 call vundle#end()                     " required
 
