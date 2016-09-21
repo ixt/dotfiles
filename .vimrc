@@ -118,7 +118,7 @@ nnoremap <leader>k <C-b>
 nnoremap <leader>j <C-f>
 
 "}}}
-" Test place {{{
+" Word Processing mode {{{
 " -----------------------------------------------------------------------------
 
 func! WordProcessingMode()
