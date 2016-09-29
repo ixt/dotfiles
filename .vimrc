@@ -16,7 +16,6 @@ set autoread
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
-  Plugin 'lervag/vimtex'                " TeX Plugin
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
   Plugin 'vim-airline'
   Plugin 'Valloric/YouCompleteMe'       " Code Completion
