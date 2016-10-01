@@ -49,8 +49,6 @@ set foldmethod=marker     " collapse code using markers
 set foldnestmax=1         " limit max folds for indent and syntax methods
 
 " Tabs
-set autoindent            " copy indent from previous line
-set smartindent           " auto add a layer of indenting if C-like
 set expandtab             " replace tabs with spaces
 set shiftwidth=4          " spaces for autoindenting
 set smarttab              " <BS> removes shiftwidth worth of spaces
@@ -116,19 +114,3 @@ nnoremap <space> za
 nnoremap <leader>k <C-b>
 nnoremap <leader>j <C-f>
 
-"}}}
-" Word Processing mode {{{
-" -----------------------------------------------------------------------------
-
-func! WordProcessingMode()
-    setlocal formatoptions=1
-    setlocal noexpandtab
-    setlocal spell spelllang=en_gb
-    map j gj
-    map k gk
-    set complete+=s
-    set formatprg=par
-    setlocal wrap
-    setlocal linebreak
-endfu
-com! WP call WordProcessingMode()

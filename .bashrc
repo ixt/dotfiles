@@ -85,7 +85,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias storageremaining='df -x fuse --total -h | tail -1 | cut -d" " -f27'
+alias storageremaining='df -x fuse --total -h | tail -1 | cut -d" " -f33'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
