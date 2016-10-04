@@ -86,6 +86,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 alias storageremaining='df -x fuse --total -h | tail -1 | cut -d" " -f33'
+alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

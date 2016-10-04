@@ -107,6 +107,9 @@ command Mmr !make && make run
 " super do write
 command W w !sudo tee % > /dev/null
 
+" date in YYYY-mm-dd HH:MM:SS
+nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S
+
 " Set space to fold
 nnoremap <space> za
 
