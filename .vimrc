@@ -61,7 +61,7 @@ set incsearch             " search whilst typing
 set ignorecase            " case insensitive searching
 set smartcase             " override ignorecase if upper case typed
 
-" Status bar -> Replace with vim-airplane plugin
+" Status bar
 set laststatus=2          " show ever
 set ruler                 " show cursor line number
 set shm=atI               " cut large messages
@@ -69,7 +69,7 @@ set shm=atI               " cut large messages
 " Colours
 set t_Co=256
 
-" Remove backup stuff
+" Remove backup stuff who needs that
 set nobackup
 set nowritebackup
 set noswapfile
@@ -79,6 +79,10 @@ highlight Comment cterm=italic
 highlight Identifier cterm=italic
 highlight Statement cterm=italic
 highlight PreProc cterm=bold
+
+" Splits
+set splitright
+set splitbelow
 
 " Folding
 autocmd FileType c,cpp,java,prg
@@ -94,6 +98,13 @@ autocmd FileType css,html
 let mapleader = ","
 let g:mapleader = ","
 
+" Split navigation
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <leader>s :split<CR>
+
 " Buffer selection
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
@@ -101,14 +112,8 @@ nnoremap <leader>p :bp<CR>
 " Search for trailing spaces and delete
 nnoremap <leader>u :%s/\s\+$//g<CR>
 
-" Make and Make run
-command Mmr !make && make run
-
-" super do write
-command W w !sudo tee % > /dev/null
-
 " date in YYYY-mm-dd HH:MM:SS
-nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S
+nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
 
 " Set space to fold
 nnoremap <space> za
@@ -116,4 +121,10 @@ nnoremap <space> za
 " Leader page turning
 nnoremap <leader>k <C-b>
 nnoremap <leader>j <C-f>
+
+" Make and Make run
+command Mmr !make && make run
+
+" super do write
+command W w !sudo tee % > /dev/null
 
