@@ -74,15 +74,15 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Splits
+set splitright
+set nosplitbelow
+
 " Highlighting
 highlight Comment cterm=italic
 highlight Identifier cterm=italic
 highlight Statement cterm=italic
 highlight PreProc cterm=bold
-
-" Splits
-set splitright
-set splitbelow
 
 " Folding
 autocmd FileType c,cpp,java,prg
@@ -103,7 +103,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <leader>s :split<CR>
+nnoremap <leader>s :vsplit<CR>
+nnoremap <leader>S :split<CR>
 
 " Buffer selection
 nnoremap <leader>n :bn<CR>
