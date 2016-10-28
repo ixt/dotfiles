@@ -129,3 +129,21 @@ command Mmr !make && make run
 " super do write
 command W w !sudo tee % > /dev/null
 
+"}}}
+" Word Processing mode {{{
+" -----------------------------------------------------------------------------
+
+func! WordProcessingMode()
+    setlocal formatoptions=1
+    setlocal noexpandtab
+    setlocal spell spelllang=en_gb
+    map j gj
+    map k gk
+    set complete+=s
+    set formatprg=par
+    setlocal wrap
+    setlocal linebreak
+endfu
+com! WP call WordProcessingMode()
+
+

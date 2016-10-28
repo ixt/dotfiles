@@ -82,7 +82,6 @@ fi
 
 alias storageremaining='df -x fuse --total -h | tail -1 | cut -d" " -f33'
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
-alias ssh='exec gpg-agent --enable-ssh-support --daemon ssh "$@"'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
