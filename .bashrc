@@ -80,7 +80,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias storageremaining='df -x fuse --total -h | tail -1 | cut -d" " -f33'
+alias storageremaining='df -x fuse --total -h | tail -1 | sed -e "s/[ ]\+/ /g" | cut -d" " -f2'
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 
 # enable programmable completion features (you don't need to enable
@@ -102,3 +102,7 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
 fi
 
 export GPG_TTY=$(tty)
+alias gpg-ssh='gpg-agent --enable-ssh-support --daemon ssh "$@"'
+alias gpg-rsync='gpg-agent --enable-ssh-support --daemon rsync "$@"'
+alias gpg-scp='gpg-agent --enable-ssh-support --daemon scp "$@"'
+alias gpg-git='gpg-agent --enable-ssh-support --daemon git "$@"'

@@ -129,6 +129,9 @@ command Mmr !make && make run
 " super do write
 command W w !sudo tee % > /dev/null
 
+" flash to microbit
+nnoremap <leader>1 :!uflash %
+
 "}}}
 " Word Processing mode {{{
 " -----------------------------------------------------------------------------
