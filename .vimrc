@@ -130,7 +130,7 @@ command Mmr !make && make run
 command W w !sudo tee % > /dev/null
 
 " flash to microbit
-nnoremap <leader>1 :!uflash %
+nnoremap <leader>1 :!uflash %<CR>
 
 "}}}
 " Word Processing mode {{{
