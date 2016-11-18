@@ -80,7 +80,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias storageremaining='df -x fuse --total -h | tail -1 | sed -e "s/[ ]\+/ /g" | cut -d" " -f2'
+alias storageremaining='df -x fuse --total -h | tail -1 | sed -e "s/[ ]\+/ /g" | cut -d" " -f3'
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 
 # enable programmable completion features (you don't need to enable
@@ -106,3 +106,18 @@ alias gpg-ssh='gpg-agent --enable-ssh-support --daemon ssh "$@"'
 alias gpg-rsync='gpg-agent --enable-ssh-support --daemon rsync "$@"'
 alias gpg-scp='gpg-agent --enable-ssh-support --daemon scp "$@"'
 alias gpg-git='gpg-agent --enable-ssh-support --daemon git "$@"'
+
+# Check for changes in verification repo
+checkFor12HourPassing(){
+    cd ~/Projects/I-am-awake-I-am-alive-I-am-orange
+    local currentTimeStamp=$(git show | head -3 | tail -1 | sed -e 's/Date:   //g;s/+0000//g')
+    local twelveHoursPast=$(date -d "$currentTimeStamp + 24 hours" +%s)
+    local currentTime=$(date +%s)
+    if [[ $currentTime -gt $twelveHoursPast ]]; then
+        echo "Go post the verification you're still alive"
+    fi
+    cd
+}
+
+checkFor12HourPassing
+
