@@ -108,16 +108,16 @@ alias gpg-scp='gpg-agent --enable-ssh-support --daemon scp "$@"'
 alias gpg-git='gpg-agent --enable-ssh-support --daemon git "$@"'
 
 # Check for changes in verification repo
-checkFor12HourPassing(){
+checkFor24HourPassing(){
     cd ~/Projects/I-am-awake-I-am-alive-I-am-orange
     local currentTimeStamp=$(git show | head -3 | tail -1 | sed -e 's/Date:   //g;s/+0000//g')
-    local twelveHoursPast=$(date -d "$currentTimeStamp + 24 hours" +%s)
+    local twentyFourHoursPast=$(date -d "$currentTimeStamp + 24 hours" +%s)
     local currentTime=$(date +%s)
-    if [[ $currentTime -gt $twelveHoursPast ]]; then
+    if [[ $currentTime -gt $twentyFourHoursPast ]]; then
         echo "Go post the verification you're still alive"
     fi
     cd
 }
 
-checkFor12HourPassing
+checkFor24HourPassing
 

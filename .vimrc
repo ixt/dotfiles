@@ -15,13 +15,10 @@ set autoread
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-  Plugin 'gmarik/Vundle.vim'
+  Plugin 'gmarik/Vundle.vim'            " Plugin manager
   Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
-  Plugin 'vim-airline'
-  Plugin 'Valloric/YouCompleteMe'       " Code Completion
-  Plugin 'rdnetto/YCM-Generator'        " Youcompleteme Generator
+  Plugin 'itchyny/lightline.vim'        " Light statusline
   Plugin 'scrooloose/syntastic'         " Syntax checking on write
-  Plugin 'tpope/vim-surround'           " Manipulate quotes and brackets
 call vundle#end()                     " required
 
 "}}}
@@ -126,9 +123,6 @@ nnoremap <leader>j <C-f>
 " Make and Make run
 command Mmr !make && make run
 
-" super do write
-command W w !sudo tee % > /dev/null
-
 " flash to microbit
 nnoremap <leader>1 :!uflash %<CR>
 
@@ -148,5 +142,3 @@ func! WordProcessingMode()
     setlocal linebreak
 endfu
 com! WP call WordProcessingMode()
-
-
