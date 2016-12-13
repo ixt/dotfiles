@@ -1,13 +1,17 @@
 "}}}
 " Small stuff {{{
 " -----------------------------------------------------------------------------
-set encoding=utf-8        " always encode in utf
 
 " File detection
-filetype on
+set encoding=utf-8        " always encode in utf
 filetype plugin indent on
 syntax on
 set autoread
+
+" Remove backup stuff who needs that
+set nobackup
+set nowritebackup
+set noswapfile
 
 "}}}
 " Vim Plugins {{{
@@ -66,15 +70,6 @@ set shm=atI               " cut large messages
 " Colours
 set t_Co=256
 
-" Remove backup stuff who needs that
-set nobackup
-set nowritebackup
-set noswapfile
-
-" Splits
-set splitright
-set nosplitbelow
-
 " Highlighting
 highlight Comment cterm=italic
 highlight Identifier cterm=italic
@@ -84,7 +79,7 @@ highlight PreProc cterm=bold
 " Folding
 autocmd FileType c,cpp,java,prg
         \ setlocal foldmethod=syntax foldnestmax=5
-autocmd FileType css,html
+autocmd FileType css,html,python
         \ setlocal foldmethod=indent foldnestmax=10
 
 "}}}
@@ -94,14 +89,6 @@ autocmd FileType css,html
 " Map leader
 let mapleader = ","
 let g:mapleader = ","
-
-" Split navigation
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <leader>s :vsplit<CR>
-nnoremap <leader>S :split<CR>
 
 " Buffer selection
 nnoremap <leader>n :bn<CR>
@@ -116,15 +103,8 @@ nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
 " Set space to fold
 nnoremap <space> za
 
-" Leader page turning
-nnoremap <leader>k <C-b>
-nnoremap <leader>j <C-f>
-
 " Make and Make run
 command Mmr !make && make run
-
-" flash to microbit
-nnoremap <leader>1 :!uflash %<CR>
 
 "}}}
 " Word Processing mode {{{
