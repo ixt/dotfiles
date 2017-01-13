@@ -14,6 +14,7 @@ git config --global commit.gpgsign true
 
 # I am awake I am alive I am orange setup
 mkdir ~/Projects
-git clone http://github.com/ixt/I-am-awake-I-am-alive-I-am-orange ~/Projects/I-am-awake-I-am-alive-I-am-orange
+git clone git@github.com:ixt/I-am-awake-I-am-alive-I-am-orange ~/Projects/I-am-awake-I-am-alive-I-am-orange
+sudo apt update
 sudo apt install ruby gem ruby-dev ruby-twitter
 
