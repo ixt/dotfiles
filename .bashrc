@@ -4,19 +4,6 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -57,9 +44,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -80,19 +64,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias storageremaining='df -x fuse --total -h | tail -1 | sed -e "s/[ ]\+/ /g" | cut -d" " -f3'
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
 export TERM=xterm-256color
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
@@ -102,10 +74,11 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
 fi
 
 export GPG_TTY=$(tty)
-alias gpg-ssh='gpg-agent --enable-ssh-support --daemon ssh "$@"'
-alias gpg-rsync='gpg-agent --enable-ssh-support --daemon rsync "$@"'
-alias gpg-scp='gpg-agent --enable-ssh-support --daemon scp "$@"'
-alias gpg-git='gpg-agent --enable-ssh-support --daemon git "$@"'
+alias gkill='pkill gpg-agent 2>/dev/null'
+alias ssh='gkill; gpg-agent --enable-ssh-support --daemon ssh "$@" 2>/dev/null'
+alias rsync='gkill; gpg-agent --enable-ssh-support --daemon rsync "$@" 2>/dev/null'
+alias scp='gkill; gpg-agent --enable-ssh-support --daemon scp "$@" 2>/dev/null'
+alias git='gkill; gpg-agent --enable-ssh-support --daemon git "$@"'
 
 # Check for changes in verification repo
 checkFor24HourPassing(){
@@ -118,6 +91,4 @@ checkFor24HourPassing(){
     fi
     cd
 }
-
-checkFor24HourPassing
-
+checkFor24HourPassing 2>/dev/null
