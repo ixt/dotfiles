@@ -75,9 +75,9 @@ fi
 
 export GPG_TTY=$(tty)
 alias gkill='pkill gpg-agent 2>/dev/null'
-alias ssh='gkill; gpg-agent --enable-ssh-support --daemon ssh "$@" 2>/dev/null'
-alias rsync='gkill; gpg-agent --enable-ssh-support --daemon rsync "$@" 2>/dev/null'
-alias scp='gkill; gpg-agent --enable-ssh-support --daemon scp "$@" 2>/dev/null'
+alias ssh='gkill; gpg-agent --enable-ssh-support --daemon ssh "$@"'
+alias rsync='gkill; gpg-agent --enable-ssh-support --daemon rsync "$@"'
+alias scp='gkill; gpg-agent --enable-ssh-support --daemon scp "$@"'
 alias git='gkill; gpg-agent --enable-ssh-support --daemon git "$@"'
 
 # Check for changes in verification repo
