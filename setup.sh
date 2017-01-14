@@ -5,8 +5,18 @@
 git submodule init && git submodule update
 vim -c":PluginInstall"
 
+# setting up pgp 
+gpg --card-status
+gpg --import keys/orangeatff4500dotred.asc
+cd keys
+gpg -d payload.gpg > payload.tar
+tar -xf payload.tar 
+gpg --import *.asc
+rm *
+git checkout -- "*"
+cd ..
+
 # Git details
-gpg --import publickey.asc
 git config --global user.name "NfN Orange"
 git config --global user.email "orange@ff4500.red"
 git config --global user.signingkey "6B35D47864E747E3" 
