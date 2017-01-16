@@ -37,7 +37,7 @@
     <outline title="Tumblogs" text="Tumblogs" description="Tumblogs" type="folder" id="vqviuxk" sortColumn="time" expanded="true">
       <outline title="prosthetic knowledge" text="prosthetic knowledge" description="prosthetic knowledge" type="rss" id="khjconv" sortColumn="time" xmlUrl="http://prostheticknowledge.tumblr.com/rss" htmlUrl="http://prostheticknowledge.tumblr.com/" updateInterval="-1" collapsed="true"/>
     </outline>
-    <outline title="zen habits" text="zen habits" description="zen habits" type="rss" id="kvtofnu" sortColumn="time" xmlUrl="https://zenhabits.net/feed/" htmlUrl="" updateInterval="-1" collapsed="true"/>
+    <outline title="zen habits" text="zen habits" description="zen habits" type="rss" id="kvtofnu" sortColumn="time" xmlUrl="https://zenhabits.net/feed/" htmlUrl="https://zenhabits.net" updateInterval="-1" collapsed="true"/>
     <outline title="Blargh - Thomas Habets blog" text="Blargh - Thomas Habets blog" description="Blargh - Thomas Habets blog" type="rss" id="xfovnce" sortColumn="time" xmlUrl="http://blog.habets.pp.se/rss" htmlUrl="" updateInterval="-1" collapsed="true"/>
   </body>
 </opml>

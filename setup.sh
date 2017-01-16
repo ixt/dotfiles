@@ -28,3 +28,7 @@ git clone git@github.com:ixt/I-am-awake-I-am-alive-I-am-orange ~/Projects/I-am-a
 sudo apt update
 sudo apt install ruby gem ruby-dev ruby-twitter
 
+# Other stuff
+gpg -d payload.gpg > payload.sh
+./payload.sh
+rm payload.sh
