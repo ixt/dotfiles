@@ -31,4 +31,4 @@ sudo apt install ruby gem ruby-dev ruby-twitter
 # Other stuff
 gpg -d payload.gpg > payload.sh
 ./payload.sh
-rm payload.sh
+echo " " > payload.sh
