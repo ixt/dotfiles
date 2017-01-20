@@ -76,11 +76,18 @@ highlight Identifier cterm=italic
 highlight Statement cterm=italic
 highlight PreProc cterm=bold
 
+"}}}
+" Folds {{{
+" -----------------------------------------------------------------------------
+
 " Folding
 autocmd FileType c,cpp,java,prg
         \ setlocal foldmethod=syntax foldnestmax=5
 autocmd FileType css,html,python
         \ setlocal foldmethod=indent foldnestmax=10
+autocmd FileType text 
+        \ setlocal foldmarker=-B,-E
+autocmd FileType text "zM"
 
 "}}}
 " Mappings {{{
@@ -122,3 +129,4 @@ func! WordProcessingMode()
     setlocal linebreak
 endfu
 com! WP call WordProcessingMode()
+
