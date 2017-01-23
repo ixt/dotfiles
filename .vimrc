@@ -86,8 +86,7 @@ autocmd FileType c,cpp,java,prg
 autocmd FileType css,html,python
         \ setlocal foldmethod=indent foldnestmax=10
 autocmd FileType text 
-        \ setlocal foldmarker=-B,-E
-autocmd FileType text "zM"
+        \ setlocal foldmarker=-B,------
 
 "}}}
 " Mappings {{{
