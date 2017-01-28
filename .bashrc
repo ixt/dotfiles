@@ -66,6 +66,7 @@ fi
 
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 export TERM=xterm-256color
+export EDITOR=vim
 
 if [ -f "${HOME}/.gpg-agent-info" ]; then
     . "${HOME}/.gpg-agent-info"
