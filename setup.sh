@@ -32,8 +32,10 @@ git remote add origin git@gitmousemobotn64.onion:x/I-am-awake-I-am-alive-I-am-or
 git remote add github git@github.com:ixt/I-am-awake-I-am-alive-I-am-orange
 git pull origin master
 git pull github master
+cd
 
 # Other stuff
 gpg -d ~/payload.gpg > ~/payload.sh
+chmod +x ~/payload.sh
 bash ~/payload.sh
-echo " " > ~/payload.sh
+rm ~/payload.sh

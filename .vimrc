@@ -8,22 +8,10 @@ filetype plugin indent on
 syntax on
 set autoread
 
-" Remove backup stuff who needs that
+" Remove backup stuff cause I don't make mistakes
 set nobackup
 set nowritebackup
 set noswapfile
-
-"}}}
-" Vim Plugins {{{
-" -----------------------------------------------------------------------------
-
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-  Plugin 'gmarik/Vundle.vim'            " Plugin manager
-  Plugin 'edkolev/promptline.vim'       " Prompt generator for bash
-  Plugin 'itchyny/lightline.vim'        " Light statusline
-  Plugin 'scrooloose/syntastic'         " Syntax checking on write
-call vundle#end()                     " required
 
 "}}}
 " Settings {{{
@@ -63,7 +51,7 @@ set ignorecase            " case insensitive searching
 set smartcase             " override ignorecase if upper case typed
 
 " Status bar
-set laststatus=2          " show ever
+set laststatus=2          " show status line always
 set ruler                 " show cursor line number
 set shm=atI               " cut large messages
 
