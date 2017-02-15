@@ -6,8 +6,8 @@
 gpg --card-status
 gpg --import ~/keys/orangeatff4500dotred.asc
 cd keys
-gpg -d ~/payload.gpg > ~/payload.tar
-tar -xf ~/payload.tar 
+gpg -d payload.gpg > payload.tar
+tar -xf payload.tar 
 gpg --import *.asc
 rm *
 git checkout -- "*"
