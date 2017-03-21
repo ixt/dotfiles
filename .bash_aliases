@@ -8,19 +8,6 @@ alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 export TERM=xterm-256color
 export EDITOR=vim
 
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-    . "${HOME}/.gpg-agent-info"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-fi
-
-export GPG_TTY=$(tty)
-alias gkill='pkill gpg-agent 2>/dev/null'
-alias git='gkill; gpg-agent --enable-ssh-support --daemon git "$@"'
-alias ssh='gkill; gpg-agent --enable-ssh-support --daemon ssh "$@"'
-alias rsync='gkill; gpg-agent --enable-ssh-support --daemon rsync "$@"'
-alias scp='gkill; gpg-agent --enable-ssh-support --daemon scp "$@"'
-
 # Check for changes in verification repo
 checkFor24HourPassing(){
     cd ~/Projects/I-am-awake-I-am-alive-I-am-orange
