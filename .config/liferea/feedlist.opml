@@ -37,5 +37,6 @@
     <outline title="Huel - Huel Blog" text="Huel - Huel Blog" description="Huel - Huel Blog" type="atom" id="vkhmiip" sortColumn="time" xmlUrl="https://huel.com/blogs/news.atom" htmlUrl="https://huel.com/blogs/news" updateInterval="-1" collapsed="true"/>
     <outline title="zen habits" text="zen habits" description="zen habits" type="rss" id="kvtofnu" sortColumn="time" xmlUrl="https://zenhabits.net/feed/" htmlUrl="https://zenhabits.net" updateInterval="-1" collapsed="true"/>
     <outline title="prosthetic knowledge" text="prosthetic knowledge" description="prosthetic knowledge" type="rss" id="khjconv" sortColumn="time" xmlUrl="http://prostheticknowledge.tumblr.com/rss" htmlUrl="http://prostheticknowledge.tumblr.com/" updateInterval="-1" collapsed="true"/>
+    <outline title="Focus Determines Reality" text="Focus Determines Reality" description="Focus Determines Reality" type="rss" id="bjvmyxy" sortColumn="time" xmlUrl="https://yawnbox.com/index.php/feed/" htmlUrl="https://yawnbox.com" updateInterval="-1" collapsed="true"/>
   </body>
 </opml>
