@@ -1,25 +1,13 @@
 #!/usr/bin/env bash
-# 2017-02-12 00:50:30
+# 2017-04-16 14:20:06
 . torsocks on
 
 # setting up pgp 
 gpg --card-status
 gpg --import ~amnesia/keys/orangeatff4500dotred.asc
-cd keys
-gpg -d payload.gpg > payload.tar
-tar -xf payload.tar 
-gpg --import *.asc
-rm *
-git checkout -- "*"
-cd ..
+
 echo ". ~/.bash_aliases" >> ~amnesia/.bashrc
 . ~amnesia/.bash_aliases
-
-# Git details
-git config --global user.name "NfN Orange"
-git config --global user.email "orange@ff4500.red"
-git config --global user.signingkey "6B35D47864E747E3" 
-git config --global commit.gpgsign true
 
 # I am awake I am alive I am orange setup
 mkdir ~amnesia/Projects/I-am-awake-I-am-alive-I-am-orange -p

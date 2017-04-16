@@ -22,20 +22,16 @@ set backspace=2           " enable <BS> for everything
 set hidden                " hide when switching buffers, don't unload
 set lazyredraw            " don't update screen when executing macros
 set noshowmode            " don't show mode, since I'm already using airline
-set showcmd               " show command on last line of screen
 set showmatch             " show bracket matches
 set ttyfast               " increase chars sent to screen for redrawing
-set title                 " use filename in window title
 set wildmenu              " enhanced cmd line completion
 set wildchar=<TAB>	      " key for line completion
-set noerrorbells          " no error sound
 set number                " enable numbers on lines
 
 " Folding
 set foldignore=           " don't ignore anything when folding
 set foldlevelstart=99     " no folds closed on open
 set foldmethod=marker     " collapse code using markers
-set foldnestmax=1         " limit max folds for indent and syntax methods
 
 " Tabs
 set expandtab             " replace tabs with spaces
@@ -57,12 +53,6 @@ set shm=atI               " cut large messages
 
 " Colours
 set t_Co=256
-
-" Highlighting
-highlight Comment cterm=italic
-highlight Identifier cterm=italic
-highlight Statement cterm=italic
-highlight PreProc cterm=bold
 
 "}}}
 " Folds {{{
@@ -97,9 +87,6 @@ nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
 " Set space to fold
 nnoremap <space> za
 
-" Make and Make run
-command Mmr !make && make run
-
 "}}}
 " Word Processing mode {{{
 " -----------------------------------------------------------------------------
@@ -116,4 +103,3 @@ func! WordProcessingMode()
     setlocal linebreak
 endfu
 com! WP call WordProcessingMode()
-
