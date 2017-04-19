@@ -34,5 +34,6 @@
     </outline>
     <outline title="The Intercept" text="The Intercept" description="The Intercept" type="rss" id="dijrkic" sortColumn="time" xmlUrl="https://theintercept.com/feed/?lang=en" htmlUrl="https://theintercept.com" updateInterval="-1" collapsed="true"/>
     <outline title="zen habits" text="zen habits" description="zen habits" type="rss" id="kvtofnu" sortColumn="time" xmlUrl="https://zenhabits.net/feed/" htmlUrl="https://zenhabits.net" updateInterval="-1" collapsed="true"/>
+    <outline title="Slate Star Codex" text="Slate Star Codex" description="Slate Star Codex" type="rss" id="ublgigk" sortColumn="time" xmlUrl="http://slatestarcodex.com/feed/" htmlUrl="http://slatestarcodex.com" updateInterval="-1" collapsed="true"/>
   </body>
 </opml>
