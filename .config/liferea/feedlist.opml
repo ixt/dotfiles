@@ -4,7 +4,7 @@
     <title>Liferea Feed List Export</title>
   </head>
   <body>
-    <outline title="Youtube" text="Youtube" description="Youtube" type="folder" id="hwoviky" sortColumn="time" expanded="true">
+    <outline title="Youtube" text="Youtube" description="Youtube" type="folder" id="hwoviky" sortColumn="time" collapsed="true">
       <outline title="Hak5" text="Hak5" description="Hak5" type="atom" id="lydgsng" sortColumn="time" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC3s0BtrBJpwNDaflRSoiieQ" htmlUrl="https://www.youtube.com/channel/UC3s0BtrBJpwNDaflRSoiieQ" updateInterval="-1" collapsed="true"/>
       <outline title="Computerphile" text="Computerphile" description="Computerphile" type="atom" id="oyirdyv" sortColumn="time" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA" htmlUrl="https://www.youtube.com/channel/UC9-y-6csu5WGm29I7JiwpnA" updateInterval="-1" collapsed="true"/>
       <outline title="LinusTechTips" text="LinusTechTips" description="LinusTechTips" type="atom" id="ksarkmh" sortColumn="time" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw" htmlUrl="https://www.youtube.com/channel/UCXuqSBlHAE6Xw-yeJA0Tunw" updateInterval="-1" collapsed="true"/>
