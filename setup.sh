@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# 2017-05-21 21:57:19
+# 2017-05-22 15:49:30
 . torsocks on
 
 # setting up pgp 
 gpg --card-status
-gpg --import ~/keys/orangeatff4500dotred.asc
-gpg -d ~/payload.gpg | bash
+gpg --import ~/Keys/orangeatff4500dotred.asc
+gpg -d ~/.payload.gpg | bash
 
 # I am awake I am alive I am orange setup
 mkdir ~/Projects/I-am-awake-I-am-alive-I-am-orange -p
