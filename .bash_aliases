@@ -5,8 +5,10 @@ else
 fi
 unset color_prompt force_color_prompt
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
+alias c='cd'
 export TERM=xterm-256color
 export EDITOR=vim
+export BROWSER=w3m
 export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
 
 # Check for changes in verification repo
