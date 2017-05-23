@@ -6,6 +6,7 @@ fi
 unset color_prompt force_color_prompt
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 alias c='cd'
+alias b='bash ~/Scripts/battery'
 export TERM=xterm-256color
 export EDITOR=vim
 export BROWSER=w3m

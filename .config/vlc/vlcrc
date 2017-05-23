@@ -1,0 +1,7 @@
+[rotate]
+rotate-angle=90
+[main]
+vout-filter=transform
+transform-type=90
+video-filter=transform{true}
+control=ncurses
