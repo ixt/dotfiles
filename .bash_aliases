@@ -9,7 +9,6 @@ alias c='cd'
 alias b='bash ~/Scripts/battery'
 export TERM=xterm-256color
 export EDITOR=vim
-export BROWSER=w3m
 export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
 
 # Check for changes in verification repo
