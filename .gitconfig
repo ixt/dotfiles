@@ -1,3 +1,5 @@
+[gpg]
+	program = /usr/bin/gpg
 [user]
 	name = NfN Orange
 	email = orange@ff4500.red
