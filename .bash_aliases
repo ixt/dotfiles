@@ -5,11 +5,14 @@ else
 fi
 unset color_prompt force_color_prompt
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
+alias shortdate='date -u +%Y-%m-%d-%H-%M-%S'
 alias c='cd'
 alias b='bash ~/Scripts/battery'
 export TERM=xterm-256color
 export EDITOR=vim
 export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
+gpg-connect-agent updatestartuptty /bye >/dev/zero
+
 
 # Check for changes in verification repo
 checkFor24HourPassing(){

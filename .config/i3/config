@@ -155,3 +155,4 @@ bar {
         tray_output DSI1
         status_command i3status
 }
+
