@@ -4,7 +4,7 @@ set $white      #ffffff
 set $red        #ff0000
 set $light      #888888
 
-
+focus_follows_mouse yes
 # class                 border  backgr. text    indicator   child_border
 client.focused          $darkg  $black  $white  $black      $darkg
 client.focused_inactive $darkg  $darkg  $white  $black      $darkg
@@ -19,7 +19,7 @@ font pango:DejaVu Sans Mono 14
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm -fa 'DejaVu Sans Mono' -fs 14
+bindsym $mod+Return exec terminology
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -145,10 +145,6 @@ bar {
             background "$black"
             statusline "$white"
             separator "$darkg"
-            focused_workspace "$red" "$darkg" "$white"
-            active_workspace "$light" "$darkg" "$light"
-            inactive_workspace "$darkg" "$darkg" "$light"
-            urgent_workspace "$red" "$red" "$white"
         }
         mode hide
         modifier $mod
@@ -156,3 +152,10 @@ bar {
         status_command i3status
 }
 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym XF86MonBrightnessDown exec dsplight down 5
+bindsym XF86MonBrightnessUp exec dsplight up 5
+no_focus [class="mpv"]
+new_window none

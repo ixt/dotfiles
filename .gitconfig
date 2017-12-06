@@ -1,8 +1,7 @@
 [gpg]
-	program = /usr/bin/gpg
+	program = gpg2
 [user]
 	name = NfN Orange
 	email = orange@ff4500.red
-	signingkey = 6B35D47864E747E3
 [commit]
 	gpgsign = true

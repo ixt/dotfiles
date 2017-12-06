@@ -58,6 +58,8 @@ autocmd FileType c,cpp,java,prg
         \ setlocal foldmethod=syntax foldnestmax=5
 autocmd FileType css,html,python
         \ setlocal foldmethod=indent foldnestmax=10
+autocmd FileType sh
+        \ setlocal foldmethod=indent foldnestmax=15
 
 "}}}
 " Mappings {{{
@@ -66,10 +68,6 @@ autocmd FileType css,html,python
 " Map leader
 let mapleader = ","
 let g:mapleader = ","
-
-" Buffer selection
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>p :bp<CR>
 
 " date in YYYY-mm-dd HH:MM:SS
 nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
