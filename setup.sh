@@ -1,21 +1,9 @@
 #!/usr/bin/env bash
-# 2017-05-22 15:49:30
-. torsocks on
+# 2017-12-27 20:56:29
 
 # setting up pgp 
 gpg --card-status
 gpg --import ~/Keys/orangeatff4500dotred.asc
-gpg -d ~/.payload.gpg | bash
-
-# I am awake I am alive I am orange setup
-mkdir ~/Projects/I-am-awake-I-am-alive-I-am-orange -p
-cd ~/Projects/I-am-awake-I-am-alive-I-am-orange 
-git init
-git remote add origin git-mandarin:x/I-am-awake-I-am-alive-I-am-orange
-git remote add github github:ixt/I-am-awake-I-am-alive-I-am-orange
-for r in $(git remote); do git pull $r master; done
-for r in $(git remote); do git push $r master; done
-cd
 
 echo ". ~/.bash_aliases" >> ~/.bashrc
 . ~/.bash_aliases

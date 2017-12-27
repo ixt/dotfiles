@@ -3,5 +3,3 @@
 [user]
 	name = NfN Orange
 	email = orange@ff4500.red
-[commit]
-	gpgsign = true
