@@ -6,3 +6,5 @@ fi
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 alias shortdate='date -u +%Y-%m-%d-%H-%M-%S'
 export EDITOR=vim
+export GOPATH=~/.go
+export PATH=$PATH:~/.go/bin
