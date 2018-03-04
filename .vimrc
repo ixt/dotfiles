@@ -75,6 +75,9 @@ nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
 " Set space to fold
 nnoremap <space> za
 
+" Format for bash
+nnoremap <leader>f :%!shfmt -ci -bn<CR>
+
 "}}}
 " Word Processing mode {{{
 " -----------------------------------------------------------------------------

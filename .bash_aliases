@@ -6,3 +6,5 @@ fi
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 export EDITOR=vim
 export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
+export GOPATH=~/.go
+export PATH=$PATH:~/.go/bin
