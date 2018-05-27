@@ -5,9 +5,9 @@ else
 fi
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 export EDITOR=vim
-export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
+
 figtimer (){
     for i in $(seq 0 $1 | tac); do sleep 1s; clear; figlet -ct "$i"; done && echo -en "\007"
 }
