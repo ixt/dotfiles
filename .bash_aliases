@@ -8,3 +8,6 @@ alias shortdate='date -u +%Y-%m-%d-%H-%M-%S'
 export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
+figtimer (){
+    for i in $(seq 0 $1 | tac); do sleep 1s; clear; figlet -ct "$i"; done && echo -en "\007"
+}
