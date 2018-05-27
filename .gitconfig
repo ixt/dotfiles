@@ -3,3 +3,6 @@
 [user]
 	name = NfN Orange
 	email = orange@ff4500.red
+	signingkey = 324020E9
+[commit]
+	gpgSign = true

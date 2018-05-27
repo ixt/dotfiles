@@ -4,8 +4,8 @@ else
     PS1='🔸@ \[\033[01;34m\]\W\[\033[00m\] \D{%T}\$ '
 fi
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
-alias shortdate='date -u +%Y-%m-%d-%H-%M-%S'
 export EDITOR=vim
+export SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
 figtimer (){
