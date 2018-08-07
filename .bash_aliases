@@ -14,6 +14,7 @@ figtimer (){
 
 get_docker(){
     # First we try detect the archtecture to add the right repo
+    CURRENTUSER=$USER
     UNAMEMACHINE=$(uname -m) 
     case $UNAMEMACHINE in 
         aarch64)
@@ -47,6 +48,8 @@ get_docker(){
         docker-ce 
     # Add to the packages file to stop the script installing more in
     # other scripts 
+    # Add user to docker group
+    sudo usermod -a -G $CURRENTUSER
     echo "docker-ce" >> ~/.packages
 }
 
@@ -78,12 +81,13 @@ run_ddk(){
         -p 8080:8080 \
         -p 8000:8000 \
         -p 7000:7000 \
+        -p 5900:5900 \
         ddk
 }
 
 import_ssh_key(){
     mkdir -p ~/.ssh
-    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpFfukcwGwd7S2GC4/zwJzDF3KEFhkXzIgb3uFNfEaKthowUD6tZjIC0frmJTWmvIR9k2P6aQP05xR8o6k2DNEEyXl33lEoma7PVEP+Rl4CvpqDrFyijOAx144pkA/WFAJfZUi6Cfm19CgtLasijCnfItGVLvOCwHcxRDVj+W3hbAlAF/cdJ+9Oo1C+ENvmi3fCdBlsTIg1gz9vliKplsHP5PSQ6xdnQShKfj83nM693yGkukCQIbLdoJNiBaWv3eaSnM9Ol+6oHTYTYhoprZrWArSqQHt+p18b790eRsVBaVpOqwuAztQoxUnc0dy2dpvVrrKuw7haZ4IF10m12Y2lwh6un/xRW86P1Iit1YY1W30AJ/X++xUCowbJJhSXwQk8Jlf9FimF1PuGWUeSMS1A/AZjqr88prmjPGcGuNPHAY/9viSYfK3pszeyqHgBrlp9iOaIJyQuE4EEDOhKSYNEdBTu9RCEbXeQpkxs/69pR96+syj4+h51mAjNGaSg7Wat7oXEesb2vmVAkFVjE6MP20MFaf8wS+28BivM/2QXbwFqSUT/Iy5wfBEYgOOvoc+pJJg6Wjzj4fxYepYdVIFcWYFaC4+SQ26jcWymE2L36TNesI13XTID+mfcIXqOg3YHBSqrTCj/2KXIe25uFxos5DxfUQEWssGOnTK+lw7mw== " >> .ssh/authorized_keys
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpFfukcwGwd7S2GC4/zwJzDF3KEFhkXzIgb3uFNfEaKthowUD6tZjIC0frmJTWmvIR9k2P6aQP05xR8o6k2DNEEyXl33lEoma7PVEP+Rl4CvpqDrFyijOAx144pkA/WFAJfZUi6Cfm19CgtLasijCnfItGVLvOCwHcxRDVj+W3hbAlAF/cdJ+9Oo1C+ENvmi3fCdBlsTIg1gz9vliKplsHP5PSQ6xdnQShKfj83nM693yGkukCQIbLdoJNiBaWv3eaSnM9Ol+6oHTYTYhoprZrWArSqQHt+p18b790eRsVBaVpOqwuAztQoxUnc0dy2dpvVrrKuw7haZ4IF10m12Y2lwh6un/xRW86P1Iit1YY1W30AJ/X++xUCowbJJhSXwQk8Jlf9FimF1PuGWUeSMS1A/AZjqr88prmjPGcGuNPHAY/9viSYfK3pszeyqHgBrlp9iOaIJyQuE4EEDOhKSYNEdBTu9RCEbXeQpkxs/69pR96+syj4+h51mAjNGaSg7Wat7oXEesb2vmVAkFVjE6MP20MFaf8wS+28BivM/2QXbwFqSUT/Iy5wfBEYgOOvoc+pJJg6Wjzj4fxYepYdVIFcWYFaC4+SQ26jcWymE2L36TNesI13XTID+mfcIXqOg3YHBSqrTCj/2KXIe25uFxos5DxfUQEWssGOnTK+lw7mw== " >> ~/.ssh/authorized_keys
     echo "ssh-key-added" >> ~/.packages
 }
 
@@ -99,4 +103,9 @@ EOF
     if ! $(grep -q "ssh-key-added" ~/.packages); then
         import_ssh_key
     fi
+}
+
+get_status(){
+    cat ~/.packages
+    ip addr | grep inet
 }
