@@ -110,7 +110,16 @@ get_status(){
     ip addr | grep inet
 }
 
-setup_jekyll(){
+get_jekyll(){
     sudo apt install ruby-dev ruby build-essential -y
-    sudo gem install jekyll
+    sudo gem install jekyll jekyll-redirect-from
+}
+
+get_vim_markdown(){
+    sudo apt install -y vim wget
+    pushd ~/.vim
+    wget https://github.com/plasticboy/vim-markdown/archive/master.tar.gz 
+    tar --strip=1 -zxf master.tar.gz
+    rm master.tar*
+    popd
 }
