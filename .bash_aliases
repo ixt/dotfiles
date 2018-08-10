@@ -109,3 +109,8 @@ get_status(){
     cat ~/.packages
     ip addr | grep inet
 }
+
+setup_jekyll(){
+    sudo apt install ruby-dev ruby build-essential -y
+    sudo gem install jekyll
+}
