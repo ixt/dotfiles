@@ -72,6 +72,10 @@ let g:mapleader = ","
 " date in YYYY-mm-dd HH:MM:SS
 nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
 
+" revebla stuff
+nnoremap <leader>c :r !echo "duodecicycle: $(( ( $(date +\%s) / 86400 - 17747 ) / 12 ))"<CR>
+nnoremap <leader>C :r !echo "duodeciday: $(( ( $(date +\%s) / 86400 - 17747 ) \% 12 ))"<CR>
+
 " Set space to fold
 nnoremap <space> za
 
