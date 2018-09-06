@@ -123,3 +123,13 @@ get_vim_markdown(){
     rm master.tar*
     popd
 }
+
+setup_notify(){
+    pushd ~
+    curl "https://chromium.googlesource.com/apps/libapps/+/refs/heads/master/hterm/etc/hterm-notify.sh?format=TEXT" \
+        | base64 -d \
+        > hterm-notify.sh
+    chmod +x ./hterm-notify.sh
+    sudo mv hterm-notify.sh /usr/local/bin/
+    popd
+}
