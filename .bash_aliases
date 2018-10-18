@@ -103,6 +103,7 @@ EOF
     if ! $(grep -q "ssh-key-added" ~/.packages); then
         import_ssh_key
     fi
+    ip addr | grep "inet"
 }
 
 get_status(){
