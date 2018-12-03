@@ -91,7 +91,7 @@ import_ssh_key(){
     echo "ssh-key-added" >> ~/.packages
 }
 
-turn_on_ssh(){
+enable_ssh(){
     sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
 Port 22
 HostKey /etc/ssh/ssh_host_ed25519_key
@@ -103,6 +103,7 @@ EOF
     if ! $(grep -q "ssh-key-added" ~/.packages); then
         import_ssh_key
     fi
+    ip addr | grep "inet"
 }
 
 get_status(){
@@ -124,7 +125,7 @@ get_vim_markdown(){
     popd
 }
 
-setup_notify(){
+get_notify(){
     pushd ~
     curl "https://chromium.googlesource.com/apps/libapps/+/refs/heads/master/hterm/etc/hterm-notify.sh?format=TEXT" \
         | base64 -d \
