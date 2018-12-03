@@ -133,3 +133,13 @@ setup_notify(){
     sudo mv hterm-notify.sh /usr/local/bin/
     popd
 }
+
+setup_showfile(){
+    pushd ~
+    curl "https://chromium.googlesource.com/apps/libapps/+/refs/heads/master/hterm/etc/hterm-show-file.sh?format=TEXT" \
+        | base64 -d \
+        > hterm-show-file.sh
+    chmod +x ./hterm-show-file.sh
+    sudo mv hterm-show-file.sh /usr/local/bin/
+    popd
+}
