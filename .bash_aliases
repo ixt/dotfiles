@@ -8,8 +8,24 @@ export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
 
+if $(grep -q "gpg-connect-agent" ~/.packages); then
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+fi
+
 figtimer (){
     for i in $(seq 0 $1 | tac); do sleep 1s; clear; figlet -ct "$i"; done && echo -en "\007"
+}
+
+enable_gpgssh(){
+    cat > ~/.gnupg/gpg-agent.conf <<EOF
+enable-ssh-support
+pinentry-program /usr/bin/pinentry-curses
+default-cache-ttl 60
+max-cache-ttl 120
+EOF
+echo "gpg-connect-agent" >> ~/.packages
 }
 
 get_docker(){
@@ -142,5 +158,14 @@ setup_showfile(){
         > hterm-show-file.sh
     chmod +x ./hterm-show-file.sh
     sudo mv hterm-show-file.sh /usr/local/bin/
+    popd
+}
+
+setup_currentProjects(){
+    mkdir ~/Projects >/dev/null
+    pushd ~/Projects >/dev/null
+        while read project; do
+            git clone git@github.com:$project
+        done < ~/.currentProjects
     popd
 }
