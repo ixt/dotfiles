@@ -8,6 +8,8 @@ export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
 
+[[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
+
 figtimer (){
     for i in $(seq 0 $1 | tac); do sleep 1s; clear; figlet -ct "$i"; done && echo -en "\007"
 }
