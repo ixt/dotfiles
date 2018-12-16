@@ -8,13 +8,18 @@ export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
 
+# Set chromeOS vim runtime
 [[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
+
 if $(grep -q "gpg-connect-agent" ~/.packages); then
     export GPG_TTY="$(tty)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     gpgconf --launch gpg-agent
     gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
+
+# Move back to present working dir if bashrc changes it for screen
+[[ "$TERM" == "screen" ]] && cd - >/dev/null
 
 figtimer (){
     for i in $(seq 0 $1 | tac); do sleep 1s; clear; figlet -ct "$i"; done && echo -en "\007"
