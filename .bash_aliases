@@ -176,3 +176,26 @@ setup_currentProjects(){
         done < ~/.currentProjects
     popd
 }
+
+# Incorporate this function into your .bash_profile (.bashrc, .zshrc, or whatever you use...)
+# Run `mov2frames name-of-mov.mov` to extract frames from the movie file
+# Run `mov2frames name-of-mov.mov 300` to extract frames from the movie file at a maximum width of 300 pixels
+# Frames will be exported into a `frames/` folder
+# NOTE: if the frames folder exists and contains files that match the filename `frame_%03d.png`, no frames will be generated
+mov2frames() {
+    if [ ! -z "$2" ]
+    then
+      size=$2
+    else
+      size=-1
+    fi
+
+    tmp_dir="./frames"
+    mkdir $tmp_dir
+
+    echo "\033[33m Extract frames $1 ($2px wide)"
+    echo "\033[32m ## Extracting frames..."
+
+    # Assumes video with 30 fps
+    ffmpeg -i $1 -vf scale=$size:-1 -r 30 $tmp_dir/frame_%03d.png
+}
