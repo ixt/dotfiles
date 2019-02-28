@@ -14,6 +14,16 @@ set nowritebackup
 set noswapfile
 
 "}}}
+" Plug {{{
+" -----------------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+Plug 'evanrelf/vim-pico8-color'
+Plug 'ssteinbach/vim-pico8-syntax'
+call plug#end()
+
+set termguicolors
+
+"}}}
 " Settings {{{
 " -----------------------------------------------------------------------------
 
@@ -81,6 +91,9 @@ nnoremap <space> za
 
 " Format for bash
 nnoremap <leader>f :%!shfmt -ci -bn<CR>
+
+" Launch file with pico8
+nnoremap <leader>p :!~/Pkgs/pico-8/pico8 -run % <CR>
 
 "}}}
 " Word Processing mode {{{
