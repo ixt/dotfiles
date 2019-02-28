@@ -1,0 +1,5 @@
+[gpg]
+	program = gpg2
+[user]
+	name = OrangeBot (Automated)
+	email = orange@reveb.la
