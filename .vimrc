@@ -21,8 +21,6 @@ Plug 'evanrelf/vim-pico8-color'
 Plug 'ssteinbach/vim-pico8-syntax'
 call plug#end()
 
-set termguicolors
-
 "}}}
 " Settings {{{
 " -----------------------------------------------------------------------------

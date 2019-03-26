@@ -4,9 +4,10 @@ else
     PS1='🔸@ \[\033[01;34m\]\W\[\033[00m\] \D{%T}\$ '
 fi
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
+alias hugos='hugo server -p 4000 '
 export EDITOR=vim
 export GOPATH=~/.go
-export PATH=$PATH:~/.go/bin
+export PATH=$PATH:~/.go/bin:/snap/bin
 
 # Set chromeOS vim runtime
 [[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
