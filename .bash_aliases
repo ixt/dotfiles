@@ -3,15 +3,17 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='🔸@ \[\033[01;34m\]\W\[\033[00m\] \D{%T}\$ '
 fi
+
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
-alias hugos='hugo server --renderToDisk -p 4000 '
+alias hugos='hugo server --renderToDisk -p 4000'
 export EDITOR=vim
 export GOPATH=~/.go
-export PATH=$PATH:~/.go/bin:/snap/bin
+export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin
 
 # Set chromeOS vim runtime
 [[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
 
+# GPG SSH Agent setup
 if $(grep -q "gpg-connect-agent" ~/.packages); then
     export GPG_TTY="$(tty)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -77,38 +79,6 @@ get_docker(){
     echo "docker-ce" >> ~/.packages
 }
 
-build_ddk(){
-    # Is docker installed? if not then install it
-    if ! $(grep -q "docker-ce" ~/.packages); then
-        get_docker
-    fi
-
-    mkdir -p ~/Projects/ddk/ 
-    pushd ~/Projects/ddk
-        # Just git setup
-        git init
-        git remote add origin http://github.com/ixt/DroidDestructionKit
-        git pull origin master
-
-        # Build
-        sudo docker build -t ddk . 
-    popd
-    echo "ddk" >> ~/.packages
-}
-
-run_ddk(){
-    if ! $(grep -q "ddk" ~/.packages); then
-        build_ddk
-    fi
-    docker run --rm \
-        --name ddk \
-        -p 8080:8080 \
-        -p 8000:8000 \
-        -p 7000:7000 \
-        -p 5900:5900 \
-        ddk
-}
-
 import_ssh_key(){
     mkdir -p ~/.ssh
     echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpFfukcwGwd7S2GC4/zwJzDF3KEFhkXzIgb3uFNfEaKthowUD6tZjIC0frmJTWmvIR9k2P6aQP05xR8o6k2DNEEyXl33lEoma7PVEP+Rl4CvpqDrFyijOAx144pkA/WFAJfZUi6Cfm19CgtLasijCnfItGVLvOCwHcxRDVj+W3hbAlAF/cdJ+9Oo1C+ENvmi3fCdBlsTIg1gz9vliKplsHP5PSQ6xdnQShKfj83nM693yGkukCQIbLdoJNiBaWv3eaSnM9Ol+6oHTYTYhoprZrWArSqQHt+p18b790eRsVBaVpOqwuAztQoxUnc0dy2dpvVrrKuw7haZ4IF10m12Y2lwh6un/xRW86P1Iit1YY1W30AJ/X++xUCowbJJhSXwQk8Jlf9FimF1PuGWUeSMS1A/AZjqr88prmjPGcGuNPHAY/9viSYfK3pszeyqHgBrlp9iOaIJyQuE4EEDOhKSYNEdBTu9RCEbXeQpkxs/69pR96+syj4+h51mAjNGaSg7Wat7oXEesb2vmVAkFVjE6MP20MFaf8wS+28BivM/2QXbwFqSUT/Iy5wfBEYgOOvoc+pJJg6Wjzj4fxYepYdVIFcWYFaC4+SQ26jcWymE2L36TNesI13XTID+mfcIXqOg3YHBSqrTCj/2KXIe25uFxos5DxfUQEWssGOnTK+lw7mw== " >> ~/.ssh/authorized_keys
@@ -138,15 +108,6 @@ get_status(){
 get_jekyll(){
     sudo apt install ruby-dev ruby build-essential -y
     sudo gem install jekyll jekyll-redirect-from
-}
-
-get_vim_markdown(){
-    sudo apt install -y vim wget
-    pushd ~/.vim
-    wget https://github.com/plasticboy/vim-markdown/archive/master.tar.gz 
-    tar --strip=1 -zxf master.tar.gz
-    rm master.tar*
-    popd
 }
 
 get_notify(){

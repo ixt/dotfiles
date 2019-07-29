@@ -8,7 +8,8 @@ filetype plugin indent on
 syntax on
 set autoread
 
-" Remove backup stuff cause I don't make mistakes
+" Remove backup stuff cause who wants random files when you forget to wrap in
+" a screen session and the connection drops
 set nobackup
 set nowritebackup
 set noswapfile
@@ -17,8 +18,21 @@ set noswapfile
 " Plug {{{
 " -----------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
-Plug 'evanrelf/vim-pico8-color'
-Plug 'ssteinbach/vim-pico8-syntax'
+    Plug 'Valloric/YouCompleteMe'       " YCM Proper, code completion
+    Plug 'rdnetto/YCM-Generator'        " YCM Config Generation
+    Plug 'scrooloose/syntastic'         " Syntax Checking on line write 
+    Plug 'scrooloose/nerdtree'          " Tree Exlporer
+    Plug 'edkolev/promptline.vim'       " Prompt generator for Bash 
+    Plug 'itchyny/lightline.vim'        " Lightline Statusline
+    Plug 'itchyny/vim-highlighturl'     " URL Highlighting
+    Plug 'itchyny/calendar.vim'         " It's a calendar!
+    Plug 'tpope/vim-surround'           " Manipulate quotes and brackets
+    Plug 'tpope/vim-fugitive'           " Git Client
+    Plug 'tpope/vim-commentary'         " Comment manipulation
+    Plug 'davidhalter/jedi-vim'         " Better Python Completion 
+    Plug 'evanrelf/vim-pico8-color'     " Color for Pico-8
+    Plug 'ssteinbach/vim-pico8-syntax'  " Syntax for Pico-8
+    Plug 'jmcantrell/vim-virtualenv'    " Python venv managment
 call plug#end()
 
 "}}}
@@ -57,6 +71,23 @@ set laststatus=2          " show status line always
 set ruler                 " show cursor line number
 set shm=atI               " cut large messages
 
+" YCM
+let g:ycm_python_binary_path = 'python'                 " Python exec
+let g:ycm_autoclose_preview_window_after_completion=1   " Timeout the completion window
+
+" Nerdtree
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Open Nerdtree if Vim opens no file
+
+" Keep undo history across sessions by storing it in a file 
+if has('persistent_undo') 
+    let undo_dir = expand('$HOME/.vim/undo_dir') 
+    if !isdirectory(undo_dir) 
+        call mkdir(undo_dir, "", 0700) 
+    endif 
+    set undodir=$HOME/.vim/undo_dir 
+    set undofile 
+endif
+
 "}}}
 " Folds {{{
 " -----------------------------------------------------------------------------
@@ -87,11 +118,22 @@ nnoremap <leader>C :r !echo "duodeciday: $(( ( $(date +\%s) / 86400 - 17747 ) \%
 " Set space to fold
 nnoremap <space> za
 
+" Buffer navigation
+nnoremap <leader>[ :bn<CR>
+nnoremap <leader>] :bp<CR>
+
 " Format for bash
 nnoremap <leader>f :%!shfmt -ci -bn<CR>
 
 " Launch file with pico8
 nnoremap <leader>p :!~/Pkgs/pico-8/pico8 -run % <CR>
+
+" YCM Go to definition
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" NERD Tree 
+map <leader>@ :NERDTreeToggle<CR> 
+
 
 "}}}
 " Word Processing mode {{{
@@ -109,3 +151,17 @@ func! WordProcessingMode()
     setlocal linebreak
 endfu
 com! WP call WordProcessingMode()
+
+"}}}
+" Lightline Config {{{
+" -----------------------------------------------------------------------------
+let g:lightline = { 
+            \ 'colorscheme': 'wombat', 
+            \ 'active': { 
+            \ 'left': [ [ 'mode', 'paste' ], 
+            \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] 
+            \ }, 
+            \ 'component_function': { 
+            \   'gitbranch': 'fugitive#head' 
+            \ }, 
+            \ }
