@@ -161,3 +161,9 @@ mov2frames() {
     # Assumes video with 30 fps
     ffmpeg -i $1 -vf scale=$size:-1 -r 30 $tmp_dir/frame_%03d.png
 }
+
+# Install vim-plug
+setup_vimplug(){
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
