@@ -25,7 +25,7 @@ endif
 call plug#begin('~/.vim/plugged')
     Plug 'Valloric/YouCompleteMe'       " YCM Proper, code completion
     Plug 'rdnetto/YCM-Generator'        " YCM Config Generation
-    Plug 'scrooloose/syntastic'         " Syntax Checking on line write 
+    Plug 'dense-analysis/ale'           " Syntax Checking asynchronously
     Plug 'scrooloose/nerdtree'          " Tree Exlporer
     Plug 'edkolev/promptline.vim'       " Prompt generator for Bash 
     Plug 'itchyny/lightline.vim'        " Lightline Statusline
@@ -38,6 +38,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'evanrelf/vim-pico8-color'     " Color for Pico-8
     Plug 'ssteinbach/vim-pico8-syntax'  " Syntax for Pico-8
     Plug 'jmcantrell/vim-virtualenv'    " Python venv managment
+    Plug 'sheerun/vim-polyglot'         " Language pack
+    Plug 'luochen1990/rainbow'          " Rainbow Parens
+    Plug 'Raimondi/delimitMate'         " imode completion quotes, parens etc
+"   Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
 call plug#end()
 
 "}}}
@@ -95,6 +99,9 @@ if has('persistent_undo')
     set undodir=$HOME/.vim/undo_dir 
     set undofile 
 endif
+
+" Rainbow 
+let g:rainbow_active = 1
 
 "}}}
 " Folds {{{
