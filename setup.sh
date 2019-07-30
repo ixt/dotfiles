@@ -2,23 +2,34 @@
 
 printf "This is a work in progress do not use\n"
 exit 0
+
+printf "[*] Typical tools \n"
 sudo apt install -y jq screen htop screenfetch make cmake       \
     vim vim-youcompleteme ycmd python3 python3-pip python3-dev  \
     git figlet caca-utils imagemagick ffmpeg ranger newsbeuter  \
-    lynx w3m wget curl ruby ruby-gem ruby-dev
+    lynx w3m wget curl ruby gem ruby-dev
 
-# Vim Plug
+printf "[*] Vim-plug \n"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim +'PlugInstall --sync' +qa
 
+printf "[*] Vim-YouCompleteMe \n"
 vam install youcompleteme
 
-sudo pip install -y youtube-dl
+printf "[*] Django Autocompletion \n"
+wget -O ~/.django_bash_completion.sh \
+    https://raw.github.com/django/django/master/extras/django_bash_completion
 
-sudo gem install jekyll
+printf "[*] Youtube-dl \n"
+yes | sudo pip install youtube-dl
+
+printf "[*] Jekyll \n"
+yes | sudo gem install jekyll
     
 [[ $DISPLAY ]] && \
-    sudo apt install -y i3 suckless-tools firefox firefox-esr   \
-        seahorse gnome-disks rxvt-unicode vlc mpv 
+    printf "[*] GUI Tools \n" && \
+    sudo apt install -y i3 suckless-tools firefox firefox-esr       \
+        seahorse gnome-disks rxvt-unicode vlc mpv scribus inkscape  \
+        gimp surf

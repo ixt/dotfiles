@@ -14,6 +14,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Column layout
+if exists('+colorcolumn') 
+    set colorcolumn=80
+endif
+
 "}}}
 " Plug {{{
 " -----------------------------------------------------------------------------
@@ -75,6 +80,9 @@ set shm=atI               " cut large messages
 let g:ycm_python_binary_path = 'python'                 " Python exec
 let g:ycm_autoclose_preview_window_after_completion=1   " Timeout the completion window
 
+" Syntastic 
+let g:syntastic_python_pylint_args = "--load-plugins pylint_django"
+
 " Nerdtree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Open Nerdtree if Vim opens no file
 
@@ -100,7 +108,7 @@ autocmd FileType css,html,python
 autocmd FileType sh
         \ setlocal foldmethod=indent foldnestmax=15
 
-"}}}
+"}}} 
 " Mappings {{{
 " -----------------------------------------------------------------------------
 
@@ -155,6 +163,7 @@ com! WP call WordProcessingMode()
 "}}}
 " Lightline Config {{{
 " -----------------------------------------------------------------------------
+
 let g:lightline = { 
             \ 'colorscheme': 'wombat', 
             \ 'active': { 
@@ -165,3 +174,8 @@ let g:lightline = {
             \   'gitbranch': 'fugitive#head' 
             \ }, 
             \ }
+"}}}
+" Syntax {{{
+" -----------------------------------------------------------------------------
+
+autocmd BufRead,BufNewFile */template[s]*/* set filetype=htmldjango

@@ -13,6 +13,9 @@ export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin
 # Set chromeOS vim runtime
 [[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
 
+# Bash Autocomplete django
+[[ -s "$HOME/.django_bash_completion.sh" ]] && source $HOME/.django_bash_completion.sh
+
 # GPG SSH Agent setup
 if $(grep -q "gpg-connect-agent" ~/.packages); then
     export GPG_TTY="$(tty)"
