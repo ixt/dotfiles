@@ -4,10 +4,11 @@ printf "This is a work in progress do not use\n"
 exit 0
 
 printf "[*] Typical tools \n"
-sudo apt install -y jq screen htop screenfetch make cmake       \
+sudo apt install -y jq screen htop screenfetch make cmake tor   \
     vim vim-youcompleteme ycmd python3 python3-pip python3-dev  \
     git figlet caca-utils imagemagick ffmpeg ranger newsbeuter  \
-    lynx w3m wget curl ruby gem ruby-dev tree python3-venv
+    lynx w3m wget curl ruby gem ruby-dev tree python3-venv nmap \
+    torsocks
 
 printf "[*] Vim-plug \n"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
