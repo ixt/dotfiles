@@ -81,7 +81,6 @@ set ruler                 " show cursor line number
 set shm=atI               " cut large messages
 
 " YCM
-let g:ycm_python_binary_path = 'python'                 " Python exec
 let g:ycm_autoclose_preview_window_after_completion=1   " Timeout the completion window
 
 " Syntastic 
