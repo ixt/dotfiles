@@ -28,10 +28,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run -nb "$black" -nf "$white" -sb "$red" -sf "$black"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -40,10 +40,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -52,7 +52,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -107,10 +107,15 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Lock on mod pause
+bindsym Pause exec --no-startup-id slock
 
 # brightness control
 bindsym Control+XF86AudioRaiseVolume exec xbacklight -inc 10
 bindsym Control+XF86AudioLowerVolume exec xbacklight -dec 10
+
+bindsym Insert exec keepassx
+for_window [class="KeePassX$"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -154,3 +159,6 @@ bar {
         modifier $mod
         status_command i3status
 }
+
+exec ~/.screenlayout/layout.sh
+

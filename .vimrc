@@ -41,6 +41,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'         " Language pack
     Plug 'luochen1990/rainbow'          " Rainbow Parens
     Plug 'Raimondi/delimitMate'         " imode completion quotes, parens etc
+    Plug 'terryma/vim-multiple-cursors' " Multiple Cursors
 "   Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
 call plug#end()
 
@@ -171,7 +172,7 @@ com! WP call WordProcessingMode()
 " -----------------------------------------------------------------------------
 
 let g:lightline = { 
-            \ 'colorscheme': 'wombat', 
+            \ 'colorscheme': 'powerline', 
             \ 'active': { 
             \ 'left': [ [ 'mode', 'paste' ], 
             \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] 
@@ -179,6 +180,8 @@ let g:lightline = {
             \ 'component_function': { 
             \   'gitbranch': 'fugitive#head' 
             \ }, 
+            \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+            \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
             \ }
 "}}}
 " Syntax {{{
