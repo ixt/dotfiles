@@ -177,8 +177,21 @@ good_morning(){
     sudo apt update && sudo apt upgrade -y
 }
 
+load_env_vars_if_some_are_missing(){
+    docker_env="/tmp/.docker_env_file_via_ssh.*"
+    if [ -s "$docker_env" ]; then
+        env | cut -d"=" -f1 \
+            | while read var; do
+                 sed -i -e "/^$var/d" $docker_env; 
+             done
+    fi
+    . $docker_env
+}
+
 enable_docker_ssh(){
     local _CONTAINER="$1"
+    docker_env=$(mktemp /tmp/.docker_env_file_via_ssh.XXXXXX)
+    load_env_vars_if_some_are_missing
     docker run \
         -d -p 2222:22 \
         -v /var/run/docker.sock:/var/run/docker.sock \
@@ -187,7 +200,9 @@ enable_docker_ssh(){
 }
 
 docker-aware-vim(){
+    load_env_vars_if_some_are_missing
     DOCKER_VIM=1 
     vim scp://ckan@localhost:2222/$@
     DOCKER_VIM=0
 }
+alias davim="docker-aware-vim"
