@@ -177,3 +177,17 @@ good_morning(){
     sudo apt update && sudo apt upgrade -y
 }
 
+enable_docker_ssh(){
+    local _CONTAINER="$1"
+    docker run \
+        -d -p 2222:22 \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -e CONTAINER=$_CONTAINER -e AUTH_MECHANISM=noAuth \
+        jeroenpeeters/docker-ssh
+}
+
+docker-aware-vim(){
+    DOCKER_VIM=1 
+    vim scp://ckan@localhost:2222/$@
+    DOCKER_VIM=0
+}
