@@ -19,7 +19,7 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal -fa 'DejaVu Sans Mono' -fs 12
+bindsym $mod+Return exec konsole 
 
 # kill focused window
 bindsym $mod+Shift+q kill

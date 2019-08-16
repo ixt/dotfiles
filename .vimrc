@@ -188,3 +188,4 @@ let g:lightline = {
 " -----------------------------------------------------------------------------
 
 autocmd BufRead,BufNewFile */template[s]*/* set filetype=htmldjango
+highlight Comment cterm=italic gui=italic
