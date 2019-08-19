@@ -233,3 +233,19 @@ git_modules_import(){
     rm tempfile
 }
 
+generate_json_profile(){
+    faker profile \
+        | sed -e "s/'\]/\"\]/g" \
+	          -e "s/':/\":/g" \
+	          -e "s/{'/{\"/g" \
+	          -e "s/',/\",/g" \
+	          -e "s/ '/ \"/g" \
+	          -e "s/u'/\"/g" \
+	          -e "s/(Decimal('/[\"/g" \
+	          -e "s/'))/\"]/g" \
+	          -e "s/'), Decimal('/\",\"/g" \
+	          -e "s/datetime.date(\([0-9]*\), \([0-9]*\), \([0-9]*\))/\"\1-\2-\3\"/g" \
+	          -e "s/'}/\"}/g" \
+	          -e "s/ u\"/ \"/g" \
+              | jq . 
+}
