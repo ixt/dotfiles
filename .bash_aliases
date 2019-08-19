@@ -175,9 +175,12 @@ setup_vimplug(){
 
 good_morning(){
     sudo apt update && sudo apt upgrade -y
-    # [ -s "/etc/openvpn/rdci.ovpn" ] \
-    #     && screen -S openvpn -d -m sudo openvpn /etc/openvpn/rdci.ovpn
 
+}
+
+open_vpn_reckon(){
+    [ -s "/etc/openvpn/rdci.ovpn" ] \
+        && screen -S openvpn -d -m sudo openvpn /etc/openvpn/rdci.ovpn
 }
 
 load_env_vars_if_some_are_missing(){
