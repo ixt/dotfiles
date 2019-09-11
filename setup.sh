@@ -33,4 +33,4 @@ yes | sudo gem install jekyll
     printf "[*] GUI Tools \n" && \
     sudo apt install -y i3 suckless-tools firefox-esr       \
         seahorse gnome-disks rxvt-unicode vlc mpv scribus inkscape  \
-        gimp surf kdeconnect
+        gimp surf kdeconnect keepassxc

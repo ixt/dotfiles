@@ -10,6 +10,8 @@ export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin
 
+[[ -a ~/.bash_aliases_scope ]] && source ~/.bash_aliases_scope
+
 # Set chromeOS vim runtime
 [[ "$USER" == "chronos" ]] && export VIMRUNTIME="/usr/local/share/vim/vim81/"
 
@@ -234,7 +236,7 @@ git_modules_import(){
 }
 
 generate_json_profile(){
-    faker profile \
+    faker profile $@ \
         | sed -e "s/'\]/\"\]/g" \
 	          -e "s/':/\":/g" \
 	          -e "s/{'/{\"/g" \

@@ -4,7 +4,6 @@ set $white      #ffffff
 set $red        #ff0000
 set $light      #888888
 
-
 # class                 border  backgr. text    indicator   child_border
 client.focused          $darkg  $black  $white  $black      $darkg
 client.focused_inactive $darkg  $darkg  $white  $black      $darkg
@@ -101,6 +100,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# focus follows mouse
+focus_follows_mouse yes
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -114,8 +116,8 @@ bindsym Pause exec --no-startup-id slock
 bindsym Control+XF86AudioRaiseVolume exec xbacklight -inc 10
 bindsym Control+XF86AudioLowerVolume exec xbacklight -dec 10
 
-bindsym Insert exec keepassx
-for_window [class="KeePassX$"] floating enable
+bindsym Insert exec keepassxc
+for_window [class="KeePassXC$"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -158,7 +160,10 @@ bar {
         mode hide
         modifier $mod
         status_command i3status
+        # Obey Fitt's Law 
+        tray_padding 0
 }
+
 
 exec ~/.screenlayout/layout.sh
 

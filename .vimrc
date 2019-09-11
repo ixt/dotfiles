@@ -42,7 +42,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'luochen1990/rainbow'          " Rainbow Parens
     Plug 'Raimondi/delimitMate'         " imode completion quotes, parens etc
     Plug 'terryma/vim-multiple-cursors' " Multiple Cursors
-"   Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
+    Plug 'prettier/vim-prettier', {'do': 'yarn install'} " Auto-formatting
+    Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
 call plug#end()
 
 "}}}
@@ -140,14 +141,14 @@ nnoremap <leader>] :bp<CR>
 " Format for bash
 nnoremap <leader>f :%!shfmt -ci -bn<CR>
 
-" Launch file with pico8
-nnoremap <leader>p :!~/Pkgs/pico-8/pico8 -run % <CR>
-
 " YCM Go to definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " NERD Tree 
 map <leader>@ :NERDTreeToggle<CR> 
+
+" GitGutter Toggle Buffer
+nnoremap <leader>1 :GitGutterBufferToggle<CR>
 
 
 "}}}
