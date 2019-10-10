@@ -23,27 +23,29 @@ endif
 " Plug {{{
 " -----------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+    Plug 'Raimondi/delimitMate'         " imode completion quotes, parens etc
     Plug 'Valloric/YouCompleteMe'       " YCM Proper, code completion
-    Plug 'rdnetto/YCM-Generator'        " YCM Config Generation
+    Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
+    Plug 'davidhalter/jedi-vim'         " Better Python Completion 
     Plug 'dense-analysis/ale'           " Syntax Checking asynchronously
-    Plug 'scrooloose/nerdtree'          " Tree Exlporer
     Plug 'edkolev/promptline.vim'       " Prompt generator for Bash 
+    Plug 'evanrelf/vim-pico8-color'     " Color for Pico-8
+    Plug 'itchyny/calendar.vim'         " It's a calendar!
     Plug 'itchyny/lightline.vim'        " Lightline Statusline
     Plug 'itchyny/vim-highlighturl'     " URL Highlighting
-    Plug 'itchyny/calendar.vim'         " It's a calendar!
-    Plug 'tpope/vim-surround'           " Manipulate quotes and brackets
-    Plug 'tpope/vim-fugitive'           " Git Client
-    Plug 'tpope/vim-commentary'         " Comment manipulation
-    Plug 'davidhalter/jedi-vim'         " Better Python Completion 
-    Plug 'evanrelf/vim-pico8-color'     " Color for Pico-8
-    Plug 'ssteinbach/vim-pico8-syntax'  " Syntax for Pico-8
     Plug 'jmcantrell/vim-virtualenv'    " Python venv managment
-    Plug 'sheerun/vim-polyglot'         " Language pack
+    Plug 'junegunn/goyo.vim'            " Note taking
     Plug 'luochen1990/rainbow'          " Rainbow Parens
-    Plug 'Raimondi/delimitMate'         " imode completion quotes, parens etc
-    Plug 'terryma/vim-multiple-cursors' " Multiple Cursors
     Plug 'prettier/vim-prettier', {'do': 'yarn install'} " Auto-formatting
-    Plug 'airblade/vim-gitgutter'       " Put git diff in gutter
+    Plug 'rdnetto/YCM-Generator'        " YCM Config Generation
+    Plug 'scrooloose/nerdtree'          " Tree Exlporer
+    Plug 'sheerun/vim-polyglot'         " Language pack
+    Plug 'sirtaj/vim-openscad'          " OpenSCAD syntax
+    Plug 'ssteinbach/vim-pico8-syntax'  " Syntax for Pico-8
+    Plug 'terryma/vim-multiple-cursors' " Multiple Cursors
+    Plug 'tpope/vim-commentary'         " Comment manipulation
+    Plug 'tpope/vim-fugitive'           " Git Client
+    Plug 'tpope/vim-surround'           " Manipulate quotes and brackets
 call plug#end()
 
 "}}}
@@ -189,4 +191,5 @@ let g:lightline = {
 " -----------------------------------------------------------------------------
 
 autocmd BufRead,BufNewFile */template[s]*/* set filetype=htmldjango
+autocmd BufRead,BufNewFile *.scad nnoremap <leader>o  :!openscad % &<CR>
 highlight Comment cterm=italic gui=italic
