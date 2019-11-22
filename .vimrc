@@ -46,6 +46,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'         " Comment manipulation
     Plug 'tpope/vim-fugitive'           " Git Client
     Plug 'tpope/vim-surround'           " Manipulate quotes and brackets
+    Plug 'tweekmonster/django-plus.vim' " Django highlighting
 call plug#end()
 
 "}}}
@@ -128,6 +129,7 @@ let g:mapleader = ","
 
 " date in YYYY-mm-dd HH:MM:SS
 nnoremap <leader>d :r !date -u +\%Y-\%m-\%d\ \%H:\%M:\%S<CR>
+nnoremap <leader>P :r !echo "import pdb; pdb.set_trace()"<CR>
 
 " revebla stuff
 nnoremap <leader>c :r !echo "duodecicycle: $(( ( $(date +\%s) / 86400 - 17747 ) / 12 ))"<CR>
@@ -190,6 +192,29 @@ let g:lightline = {
 " Syntax {{{
 " -----------------------------------------------------------------------------
 
-autocmd BufRead,BufNewFile */template[s]*/* set filetype=htmldjango
 autocmd BufRead,BufNewFile *.scad nnoremap <leader>o  :!openscad % &<CR>
 highlight Comment cterm=italic gui=italic
+
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'tex': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\       },
+\       'lisp': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'vim': {
+\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\       },
+\       'html': {
+\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\       },
+\       'htmldjango': 0,
+\       'css': 0,
+\   }
+\}

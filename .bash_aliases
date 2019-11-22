@@ -6,6 +6,9 @@ fi
 
 alias nicedate='date -u +%Y-%m-%d\ %H-%M-%S'
 alias hugos='hugo server --renderToDisk -p 4000'
+alias gss='git status'
+alias ga='git add -u'
+alias gca='git commit --amend'
 export EDITOR=vim
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin
@@ -250,4 +253,8 @@ generate_json_profile(){
 	          -e "s/'}/\"}/g" \
 	          -e "s/ u\"/ \"/g" \
               | jq . 
+}
+
+edit_git_first_modified(){
+    vim $(echo $(git status | grep "^[[:space:]]*modified" | cut -d: -f2 | head -1))
 }

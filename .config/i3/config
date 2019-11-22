@@ -116,8 +116,7 @@ bindsym Pause exec --no-startup-id slock
 bindsym Control+XF86AudioRaiseVolume exec xbacklight -inc 10
 bindsym Control+XF86AudioLowerVolume exec xbacklight -dec 10
 
-bindsym Insert exec keepassxc
-for_window [class="KeePassXC$"] floating enable
+bindsym Insert exec google-chrome --force-device-scale-factor=2
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,4 +165,5 @@ bar {
 
 
 exec ~/.screenlayout/layout.sh
+bindsym $mod+Shift+i exec xvkbd -text "c.orange@reckondigital.com\torange\r" 
 
