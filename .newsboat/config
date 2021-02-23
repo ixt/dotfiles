@@ -1,0 +1,5 @@
+save-path ~/.newsboat/saved_articles
+# Open video in VLC
+macro p set browser "vlc %u :vout-filter=transform --transform-type=90 --video-filter transform{true}"; open-in-browser ; set browser "$BROWSER %u"
+# Download video
+macro d set browser "youtube-dl -f 22 %u &"; open-in-browser ; set browser "$BROWSER %u"

@@ -47,6 +47,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'           " Git Client
     Plug 'tpope/vim-surround'           " Manipulate quotes and brackets
     Plug 'tweekmonster/django-plus.vim' " Django highlighting
+    Plug 'Chiel92/vim-autoformat'       " Autoformatting
 call plug#end()
 
 "}}}

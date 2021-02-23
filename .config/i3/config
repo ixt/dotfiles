@@ -18,7 +18,7 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole 
+bindsym $mod+Return exec gnome-terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,6 +87,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+i workspace 11
+bindsym $mod+o workspace 12
+bindsym $mod+p workspace 13
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -164,6 +167,15 @@ bar {
 }
 
 
-exec ~/.screenlayout/layout.sh
+exec ~/.screenlayout/default.sh
 bindsym $mod+Shift+i exec xvkbd -text "c.orange@reckondigital.com\torange\r" 
+bindsym $mod+Shift+d exec google-earth-pro
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+t exec obs 
+exec compton
+exec albert
+exec kdeconnect-indicator 
+exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
 

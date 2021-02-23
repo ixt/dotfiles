@@ -11,7 +11,7 @@ alias ga='git add -u'
 alias gca='git commit --amend'
 export EDITOR=vim
 export GOPATH=~/.go
-export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin
+export PATH=$PATH:~/.go/bin:/snap/bin:~/.local/bin:~/.cargo/bin
 
 [[ -a ~/.bash_aliases_scope ]] && source ~/.bash_aliases_scope
 

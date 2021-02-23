@@ -1,7 +1,7 @@
 #!/bin/bash
 
 printf "This is a work in progress do not use\n"
-exit 0
+#exit 0
 
 printf "[*] Typical tools \n"
 sudo apt install -y jq screen htop screenfetch make cmake tor   \
@@ -31,6 +31,6 @@ yes | sudo gem install jekyll
     
 [[ $DISPLAY ]] && \
     printf "[*] GUI Tools \n" && \
-    sudo apt install -y i3 suckless-tools firefox-esr       \
-        seahorse gnome-disks rxvt-unicode vlc mpv scribus inkscape  \
+    sudo apt install -y i3 suckless-tools       \
+        seahorse rxvt-unicode vlc mpv scribus inkscape  \
         gimp surf kdeconnect keepassxc
